@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing — Dinnrd</title>
+  <link rel="stylesheet" href="/css/auth.css">
+  <style>
+    body { display:flex; align-items:center; justify-content:center; min-height:100vh;
+           background:var(--green-dark); }
+    .spinner { color:#a8c4b0; font-size:14px; }
+  </style>
+</head>
+<body class="auth-body" style="padding:0;">
+  <p class="spinner">Loading billing portal…</p>
+
+<script src="/js/config.js"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const { supabaseUrl, supabaseAnonKey } = window.DINNRD_CONFIG;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+const { data: { session } } = await supabase.auth.getSession();
+if (!session) { location.replace('/login?redirect=/account/billing'); throw new Error(); }
+
+const res  = await fetch('/.netlify/functions/create-portal-session', {
+  method: 'POST',
+  headers: { 'Authorization': 'Bearer ' + session.access_token },
+});
+const data = await res.json();
+
+if (data.url) {
+  location.replace(data.url);
+} else {
+  location.replace('/account');
+}
+</script>
+</body>
+</html>
