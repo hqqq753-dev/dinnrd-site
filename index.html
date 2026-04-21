@@ -681,15 +681,100 @@
     @media (min-width: 768px) {
       .phone-col { perspective: 800px; }
     }
+
+    /* ── Site nav ──────────────────────────────────────────────────────────── */
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(29,77,46,0);
+      transition: background 0.3s;
+    }
+    #site-nav.scrolled { background: rgba(29,77,46,0.97); backdrop-filter: blur(8px); }
+
+    .nav-wordmark {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-wordmark span { color: var(--orange); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-btn-signin {
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 10px;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-btn-signin:hover { color: #fff; }
+    .nav-btn-signup {
+      font-size: 13px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      color: var(--cream);
+      background: var(--orange);
+      border: none;
+      border-radius: 6px;
+      padding: 7px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .nav-btn-signup:hover { background: #cf6e3f; }
+    .nav-btn-signup:active { transform: scale(0.97); }
+    .nav-user {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-account-link {
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 6px 12px;
+      transition: background 0.15s;
+    }
+    .nav-account-link:hover { background: rgba(255,255,255,0.2); }
   </style>
 </head>
 <body>
 <div id="scroll-progress" aria-hidden="true"></div>
 
+<nav id="site-nav" aria-label="Site navigation">
+  <a href="/" class="nav-wordmark">Dinnr<span>d</span></a>
+  <div class="nav-right" id="nav-right">
+    <!-- populated by JS -->
+  </div>
+</nav>
+
 <!-- ══════════════════════════════════════════════════════════════════
      SECTION 1 — Hero
 ═══════════════════════════════════════════════════════════════════ -->
-<section id="hero" aria-label="Hero">
+<section id="hero" aria-label="Hero" style="padding-top:120px;">
   <div class="hero-vignette" aria-hidden="true"></div>
   <div id="hero-spotlight" aria-hidden="true"></div>
 
@@ -1347,6 +1432,39 @@
       if (e.key === 'Enter') submitForm(prefix);
     });
   });
+
+  // ── Nav scroll state ──────────────────────────────────────────────────────
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+
+<script src="/js/config.js"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const { supabaseUrl, supabaseAnonKey } = window.DINNRD_CONFIG;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const navRight = document.getElementById('nav-right');
+
+try {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) {
+    const name = session.user.user_metadata?.full_name
+      || session.user.email.split('@')[0];
+    navRight.innerHTML = `
+      <span class="nav-user">Hi, ${name}</span>
+      <a href="/account" class="nav-account-link">Account</a>`;
+  } else {
+    navRight.innerHTML = `
+      <a href="/login" class="nav-btn-signin">Sign in</a>
+      <a href="/signup" class="nav-btn-signup">Sign up free</a>`;
+  }
+} catch (_) {
+  navRight.innerHTML = `
+    <a href="/login" class="nav-btn-signin">Sign in</a>
+    <a href="/signup" class="nav-btn-signup">Sign up free</a>`;
+}
 </script>
 
 </body>
