@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change password — Dinnrd</title>
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-card">
+  <a href="/" class="auth-wordmark">Dinnr<span>d</span></a>
+  <h1 class="auth-heading">Change password.</h1>
+
+  <div id="form-error" class="inline-error" style="display:none; margin-bottom:8px;"></div>
+  <div id="form-success" class="inline-success" style="display:none; margin-bottom:8px;"></div>
+
+  <form id="change-form" novalidate>
+    <div class="field-group">
+      <div class="input-pw-wrap">
+        <input type="password" id="new-password" class="input-field"
+               placeholder="New password (min 8 characters)" autocomplete="new-password" required>
+        <button type="button" class="btn-show-pw" id="toggle-pw1" aria-label="Show password">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="pw-strength-bar"><div class="pw-strength-fill" id="pw-strength"></div></div>
+      <div class="field-error" id="pw-error"></div>
+    </div>
+    <div class="field-group">
+      <div class="input-pw-wrap">
+        <input type="password" id="confirm-password" class="input-field"
+               placeholder="Confirm new password" autocomplete="new-password" required>
+        <button type="button" class="btn-show-pw" id="toggle-pw2" aria-label="Show password">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="field-error" id="confirm-error"></div>
+    </div>
+    <button type="submit" class="btn-primary" id="btn-submit">Update password</button>
+  </form>
+
+  <p class="auth-link"><a href="/account">Back to account</a></p>
+</div>
+
+<script src="/js/config.js"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const { supabaseUrl, supabaseAnonKey } = window.DINNRD_CONFIG;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// This page is reached via email reset link — session is in URL hash
+const { data: { session } } = await supabase.auth.getSession();
+if (!session) {
+  location.replace('/login');
+  throw new Error('no session');
+}
+
+// Password toggles
+function makePwToggle(btnId, inputId) {
+  const inp = document.getElementById(inputId);
+  document.getElementById(btnId).addEventListener('click', () => {
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  });
+}
+makePwToggle('toggle-pw1', 'new-password');
+makePwToggle('toggle-pw2', 'confirm-password');
+
+// Strength bar
+const strengthBar = document.getElementById('pw-strength');
+function calcStrength(pw) {
+  if (pw.length < 8)  return 'weak';
+  if (pw.length < 10) return 'fair';
+  if (/[A-Z]/.test(pw) && /[0-9]/.test(pw)) return 'strong';
+  return 'fair';
+}
+document.getElementById('new-password').addEventListener('input', (e) => {
+  const level = e.target.value ? calcStrength(e.target.value) : '';
+  strengthBar.className = 'pw-strength-fill' + (level ? ' ' + level : '');
+});
+
+document.getElementById('change-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const newPw  = document.getElementById('new-password').value;
+  const confirm = document.getElementById('confirm-password').value;
+  const btn     = document.getElementById('btn-submit');
+  const errEl   = document.getElementById('form-error');
+  const sucEl   = document.getElementById('form-success');
+
+  errEl.style.display = 'none'; sucEl.style.display = 'none';
+  document.getElementById('pw-error').textContent = '';
+  document.getElementById('confirm-error').textContent = '';
+
+  if (newPw.length < 8) {
+    document.getElementById('pw-error').textContent = 'Password must be at least 8 characters.';
+    return;
+  }
+  if (newPw !== confirm) {
+    document.getElementById('confirm-error').textContent = 'Passwords do not match.';
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Updating…';
+
+  const { error } = await supabase.auth.updateUser({ password: newPw });
+
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Update password';
+    return;
+  }
+
+  sucEl.textContent = 'Password updated.';
+  sucEl.style.display = 'block';
+  document.getElementById('change-form').style.display = 'none';
+  setTimeout(() => location.replace('/account'), 1500);
+});
+</script>
+</body>
+</html>
