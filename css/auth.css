@@ -1,0 +1,568 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:       #FAF7F2;
+  --green-dark:  #1D4D2E;
+  --green-soft:  #2D6A3F;
+  --orange:      #C4622D;
+  --orange-hover:#cf6e3f;
+  --text-dark:   #1A1A1A;
+  --text-muted:  #6B6B6B;
+  --border:      #e8e0d4;
+  --error:       #C4622D;
+  --success:     #2D6A3F;
+}
+
+/* ── Auth pages (login, signup, etc.) ───────────────────────────── */
+body.auth-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--green-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 24px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+}
+@media (max-width: 480px) {
+  .auth-card { padding: 32px 20px; border-radius: 12px; }
+  body.auth-body { padding: 24px 16px; }
+}
+
+.auth-wordmark {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.auth-wordmark span { color: var(--orange); }
+
+.auth-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.auth-subline {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* ── OAuth buttons ──────────────────────────────────────────────── */
+.btn-oauth {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+.btn-oauth:active { transform: scale(0.97); }
+.btn-apple  { background: #000; color: #fff; border-color: #000; }
+.btn-apple:hover { background: #1a1a1a; }
+.btn-google { background: #fff; color: var(--text-dark); }
+.btn-google:hover { background: #f7f7f7; }
+
+/* ── Divider ───────────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Form fields ───────────────────────────────────────────────── */
+.field-group { margin-bottom: 12px; }
+
+.input-field {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.input-field:focus { border-color: var(--green-dark); }
+.input-field::placeholder { color: #bbb; }
+.input-field.error { border-color: var(--error); }
+
+.input-pw-wrap { position: relative; }
+.input-pw-wrap .input-field { padding-right: 46px; }
+.btn-show-pw {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+.btn-show-pw:hover { color: var(--text-dark); }
+
+.field-error {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+/* ── Password strength bar ─────────────────────────────────────── */
+.pw-strength-bar {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border);
+  margin-top: 6px;
+  overflow: hidden;
+}
+.pw-strength-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s, background 0.3s;
+}
+.pw-strength-fill.weak   { width: 33%; background: var(--error); }
+.pw-strength-fill.fair   { width: 66%; background: #e8a24a; }
+.pw-strength-fill.strong { width: 100%; background: var(--success); }
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+.btn-primary {
+  display: block;
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  background: var(--orange);
+  color: var(--cream);
+  font-size: 15px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-primary:hover:not(:disabled) { background: var(--orange-hover); }
+.btn-primary:active:not(:disabled) { transform: scale(0.97); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--text-dark);
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: var(--cream); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ── Auth helper links ─────────────────────────────────────────── */
+.auth-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 14px;
+}
+.auth-link a { color: var(--green-dark); font-weight: 500; text-decoration: none; }
+.auth-link a:hover { text-decoration: underline; }
+
+/* ── Inline success/info message ──────────────────────────────── */
+.inline-success {
+  font-size: 14px;
+  color: var(--success);
+  text-align: center;
+  margin-top: 12px;
+}
+.inline-error {
+  font-size: 14px;
+  color: var(--error);
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ── Account page layout ──────────────────────────────────────── */
+body.account-body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.account-header {
+  background: var(--green-dark);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+.account-header-wordmark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.account-header-wordmark span { color: var(--orange); }
+.btn-signout {
+  font-size: 13px;
+  color: #a8c4b0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px 0;
+}
+.btn-signout:hover { color: #fff; }
+
+.account-main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* ── Cards ────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 28px 32px;
+  margin-bottom: 16px;
+}
+@media (max-width: 480px) {
+  .card { padding: 20px 20px 24px; }
+  .account-main { padding: 20px 16px 48px; }
+}
+.card-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+.card-subtext {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* ── Subscription status badges ─────────────────────────────── */
+.sub-status {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sub-status.active  { color: var(--success); }
+.sub-status.trial   { color: var(--success); }
+.sub-status.canceled, .sub-status.past-due { color: var(--text-muted); }
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── Profile form components ──────────────────────────────────── */
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.input-readonly {
+  background: #f5f5f5;
+  cursor: default;
+  color: var(--text-muted);
+}
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 600;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Stepper */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 48px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 140px;
+  background: var(--cream);
+}
+.stepper-btn {
+  width: 48px;
+  height: 100%;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.stepper-btn:hover { background: rgba(29,77,46,0.08); }
+.stepper-val {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  pointer-events: none;
+}
+
+/* Cook time selector */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+@media (max-width: 420px) {
+  .option-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.option-btn {
+  height: 44px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream);
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+.option-btn:active { transform: scale(0.97); }
+.option-btn.selected {
+  border-color: var(--green-dark);
+  background: rgba(29,77,46,0.06);
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+/* Dietary restrictions grid */
+.restrict-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.restrict-btn {
+  height: 44px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream);
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+.restrict-btn:active { transform: scale(0.97); }
+.restrict-btn.selected {
+  border-color: var(--green-dark);
+  background: rgba(29,77,46,0.06);
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+/* Goals cards */
+.goals-grid { display: flex; flex-direction: column; gap: 8px; }
+.goal-btn {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream);
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+.goal-btn:active { transform: scale(0.97); }
+.goal-btn.selected {
+  border-color: var(--green-dark);
+  background: rgba(29,77,46,0.06);
+}
+.goal-btn .goal-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 2px;
+}
+.goal-btn.selected .goal-name { color: var(--green-dark); }
+.goal-btn .goal-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Referral card ──────────────────────────────────────────── */
+.referral-pos {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--green-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.referral-url-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.referral-url-input {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 13px;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-family: monospace;
+  outline: none;
+}
+.btn-copy {
+  height: 40px;
+  padding: 0 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-copy:active { transform: scale(0.97); }
+.btn-copy.copied { color: var(--success); border-color: var(--success); }
+
+/* ── Account actions card ───────────────────────────────────── */
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.action-row:last-child { border-bottom: none; }
+.action-label { font-size: 14px; color: var(--text-dark); }
+.action-link {
+  font-size: 14px;
+  color: var(--green-dark);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0;
+}
+.action-link:hover { text-decoration: underline; }
+.action-link.destructive { color: var(--error); }
+
+/* ── Modal / confirm dialog ─────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+.modal-overlay.hidden { display: none; }
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  max-width: 380px;
+  width: 100%;
+}
+.modal-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.modal-body { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
