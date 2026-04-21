@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinnrd</title>
+  <link rel="stylesheet" href="/css/auth.css">
+  <style>
+    body { display:flex; align-items:center; justify-content:center; min-height:100vh;
+           background:var(--green-dark); font-family:inherit; }
+    .spinner { color:#a8c4b0; font-size:14px; text-align:center; }
+  </style>
+</head>
+<body class="auth-body" style="padding:0;">
+  <div class="spinner">Signing you in…</div>
+
+<script src="/js/config.js"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const { supabaseUrl, supabaseAnonKey, siteUrl } = window.DINNRD_CONFIG;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+const params  = new URLSearchParams(location.search);
+const hashMap = new URLSearchParams(location.hash.slice(1));
+
+// PKCE code exchange (most OAuth flows)
+const code = params.get('code');
+if (code) {
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
+  if (error) {
+    location.replace('/login?error=' + encodeURIComponent(error.message));
+    throw error;
+  }
+}
+
+const { data: { session } } = await supabase.auth.getSession();
+
+if (!session) {
+  location.replace('/login');
+  throw new Error('no session after callback');
+}
+
+const user = session.user;
+
+// If redirecting to change-password (password reset flow)
+if (params.get('next') === 'change-password') {
+  location.replace('/change-password');
+  throw new Error('redirecting');
+}
+
+// Check if this is a new user — no profile yet
+const { data: profile } = await supabase
+  .from('profiles')
+  .select('id')
+  .eq('id', user.id)
+  .maybeSingle();
+
+if (!profile) {
+  // First sign-in — create Stripe customer + subscription
+  const ref = params.get('ref') || '';
+  try {
+    await fetch('/.netlify/functions/create-subscription', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + session.access_token,
+      },
+      body: JSON.stringify({ referralCode: ref }),
+    });
+  } catch (err) {
+    console.warn('create-subscription error (non-fatal):', err);
+  }
+}
+
+const raw = params.get('redirect') || '/account';
+const redirect = raw.startsWith('/') && !raw.startsWith('//') ? raw : '/account';
+location.replace(redirect);
+</script>
+</body>
+</html>
