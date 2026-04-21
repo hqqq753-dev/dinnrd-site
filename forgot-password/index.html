@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset your password — Dinnrd</title>
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-card">
+  <a href="/" class="auth-wordmark">Dinnr<span>d</span></a>
+  <h1 class="auth-heading">Reset your password.</h1>
+  <p class="auth-subline">Enter your email and we'll send you a reset link.</p>
+
+  <div id="success-msg" class="inline-success" style="display:none; margin-bottom:12px;"></div>
+
+  <form id="reset-form" novalidate>
+    <div class="field-group">
+      <input type="email" id="email" class="input-field" placeholder="Email address"
+             autocomplete="email" inputmode="email" required>
+      <div class="field-error" id="email-error"></div>
+    </div>
+    <button type="submit" class="btn-primary" id="btn-submit">Send reset link</button>
+  </form>
+
+  <p class="auth-link"><a href="/login">Back to sign in</a></p>
+</div>
+
+<script src="/js/config.js"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const { supabaseUrl, supabaseAnonKey, siteUrl } = window.DINNRD_CONFIG;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+document.getElementById('reset-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const btn   = document.getElementById('btn-submit');
+  const errEl = document.getElementById('email-error');
+  const sucEl = document.getElementById('success-msg');
+
+  errEl.textContent = ''; sucEl.style.display = 'none';
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: siteUrl + '/auth/callback?next=change-password',
+  });
+
+  if (error) {
+    errEl.textContent = error.message;
+    btn.disabled = false; btn.textContent = 'Send reset link';
+    return;
+  }
+
+  // Don't reveal whether the email exists — always show success
+  document.getElementById('reset-form').style.display = 'none';
+  sucEl.textContent = 'Check your email for a reset link.';
+  sucEl.style.display = 'block';
+});
+</script>
+</body>
+</html>
