@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your account — Dinnrd</title>
+  <link rel="stylesheet" href="/css/auth.css">
+  <style>
+    .save-row { display:flex; align-items:center; gap:16px; margin-top:20px; }
+    .save-row .inline-success, .save-row .inline-error { margin:0; }
+    .field-group-row { margin-bottom:20px; }
+    .skeleton { background:#eee; border-radius:4px; animation:pulse 1.4s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+  </style>
+</head>
+<body class="account-body">
+
+<!-- Header -->
+<header class="account-header">
+  <a href="/" class="account-header-wordmark">Dinnr<span>d</span></a>
+  <button class="btn-signout" id="btn-signout">Sign out</button>
+</header>
+
+<main class="account-main">
+
+  <!-- Card 1: Subscription -->
+  <div class="card">
+    <p class="card-title">Subscription</p>
+    <div id="sub-card-content">
+      <div class="skeleton" style="height:20px;width:60%;margin-bottom:8px;"></div>
+      <div class="skeleton" style="height:16px;width:80%;"></div>
+    </div>
+  </div>
+
+  <!-- Card 2: Profile -->
+  <div class="card">
+    <p class="card-title">Your profile</p>
+    <form id="profile-form" novalidate>
+
+      <div class="field-group-row">
+        <label class="form-label" for="full-name">Full name</label>
+        <input type="text" id="full-name" class="input-field" placeholder="Your name" autocomplete="name">
+      </div>
+
+      <div class="field-group-row">
+        <label class="form-label">
+          Email
+          <span class="verified-badge" id="verified-badge" style="display:none;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Verified
+          </span>
+        </label>
+        <input type="email" id="email-display" class="input-field input-readonly" readonly>
+      </div>
+
+      <div class="field-group-row">
+        <label class="form-label">Household size</label>
+        <div class="stepper">
+          <button type="button" class="stepper-btn" id="stepper-minus" aria-label="Decrease">−</button>
+          <span class="stepper-val" id="stepper-val">2</span>
+          <button type="button" class="stepper-btn" id="stepper-plus" aria-label="Increase">+</button>
+        </div>
+      </div>
+
+      <div class="field-group-row">
+        <label class="form-label">Default cook time</label>
+        <div class="option-grid" id="cook-time-grid"></div>
+      </div>
+
+      <div class="field-group-row">
+        <label class="form-label">Dietary restrictions</label>
+        <div class="restrict-grid" id="restrict-grid"></div>
+      </div>
+
+      <div class="field-group-row">
+        <label class="form-label">Goals</label>
+        <div class="goals-grid" id="goals-grid"></div>
+      </div>
+
+      <div class="save-row">
+        <button type="submit" class="btn-primary" id="btn-save" style="max-width:160px;">Save changes</button>
+        <span class="inline-success" id="save-success" style="display:none;">Saved.</span>
+        <span class="inline-error" id="save-error" style="display:none;"></span>
+      </div>
+    </form>
+  </div>
+
+  <!-- Card 3: Waitlist & Referral -->
+  <div class="card">
+    <p class="card-title">Waitlist &amp; referral</p>
+    <div id="waitlist-card-content">
+      <div class="skeleton" style="height:16px;width:70%;margin-bottom:8px;"></div>
+    </div>
+  </div>
+
+  <!-- Card 4: Account -->
+  <div class="card">
+    <p class="card-title">Account</p>
+    <div class="action-row">
+      <span class="action-label">Password</span>
+      <a href="/change-password" class="action-link">Change password</a>
+    </div>
+    <div class="action-row">
+      <span class="action-label">Delete account</span>
+      <button class="action-link destructive" id="btn-delete-account">Delete account</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- Delete confirm modal -->
+<div class="modal-overlay hidden" id="delete-modal">
+  <div class="modal-box">
+    <p class="modal-title">Delete your account?</p>
+    <p class="modal-body">This will cancel your subscription and permanently delete all your data. This cannot be undone.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="btn-cancel-delete">Cancel</button>
+      <button class="btn-primary" id="btn-confirm-delete"
+              style="width:auto;padding:0 20px;background:#C4622D;">Delete account</button>
+    </div>
+    <div class="inline-error" id="delete-error" style="margin-top:12px;text-align:center;"></div>
+  </div>
+</div>
+
+<script src="/js/config.js"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const { supabaseUrl, supabaseAnonKey, siteUrl } = window.DINNRD_CONFIG;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// ── Auth guard ────────────────────────────────────────────────────────────────
+const { data: { session } } = await supabase.auth.getSession();
+if (!session) {
+  location.replace('/login?redirect=/account');
+  throw new Error('not authenticated');
+}
+const user = session.user;
+
+// ── Sign out ──────────────────────────────────────────────────────────────────
+document.getElementById('btn-signout').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  location.replace('/');
+});
+
+// ── Load data in parallel ─────────────────────────────────────────────────────
+const [profileRes, subRes] = await Promise.all([
+  supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
+  supabase.from('stripe_customers').select('*').eq('user_id', user.id).maybeSingle(),
+]);
+const profile = profileRes.data;
+const sub     = subRes.data;
+
+// ── Subscription card ─────────────────────────────────────────────────────────
+async function openBillingPortal(event) {
+  const btn = event.currentTarget;
+  btn.disabled = true; btn.textContent = 'Loading…';
+  const res  = await fetch('/.netlify/functions/create-portal-session', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + session.access_token },
+  });
+  const data = await res.json();
+  if (data.url) location.href = data.url;
+  else { btn.disabled = false; btn.textContent = btn.dataset.label; }
+}
+
+function renderSubCard(sub) {
+  const el = document.getElementById('sub-card-content');
+  if (!sub || !sub.subscription_status || sub.subscription_status === 'none') {
+    el.innerHTML = `
+      <p class="card-subtext">Free plan</p>
+      <button class="btn-primary" style="max-width:280px;" onclick="location.href='/signup'">
+        Upgrade to Premium — $4.99/month
+      </button>`;
+    return;
+  }
+  if (sub.subscription_status === 'trialing') {
+    const end  = new Date(sub.trial_end);
+    const days = Math.max(0, Math.ceil((end - Date.now()) / 864e5));
+    el.innerHTML = `
+      <p class="sub-status trial">Free trial — ${days} day${days !== 1 ? 's' : ''} remaining</p>
+      <p class="card-subtext">Your trial ends on ${end.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}. After that, $4.99/month.</p>
+      <button class="btn-primary" style="max-width:240px;" id="btn-portal" data-label="Add payment method">Add payment method</button>`;
+    document.getElementById('btn-portal').addEventListener('click', openBillingPortal);
+    return;
+  }
+  if (sub.subscription_status === 'active') {
+    const next = new Date(sub.current_period_end);
+    el.innerHTML = `
+      <p class="sub-status active"><span class="status-dot"></span>Premium — Active</p>
+      <p class="card-subtext">Next billing date: ${next.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</p>
+      <button class="btn-secondary" id="btn-portal" data-label="Manage subscription">Manage subscription</button>`;
+    document.getElementById('btn-portal').addEventListener('click', openBillingPortal);
+    return;
+  }
+  if (sub.subscription_status === 'canceled') {
+    el.innerHTML = `
+      <p class="sub-status canceled">Subscription ended</p>
+      <button class="btn-primary" style="max-width:200px;" id="btn-portal" data-label="Resubscribe">Resubscribe</button>`;
+    document.getElementById('btn-portal').addEventListener('click', openBillingPortal);
+    return;
+  }
+  if (sub.subscription_status === 'past_due') {
+    el.innerHTML = `
+      <p class="sub-status past-due">Payment failed</p>
+      <p class="card-subtext">Update your payment method to continue.</p>
+      <button class="btn-primary" style="max-width:280px;" id="btn-portal" data-label="Update payment method">Update payment method</button>`;
+    document.getElementById('btn-portal').addEventListener('click', openBillingPortal);
+  }
+}
+renderSubCard(sub);
+
+// ── Profile form ──────────────────────────────────────────────────────────────
+const DIETARY_OPTIONS = [
+  { value: 'vegetarian',  label: 'Vegetarian', emoji: '🥦' },
+  { value: 'vegan',       label: 'Vegan',       emoji: '🌱' },
+  { value: 'gluten-free', label: 'Gluten-free', emoji: '🌾' },
+  { value: 'dairy-free',  label: 'Dairy-free',  emoji: '🥛' },
+  { value: 'nut-free',    label: 'Nut-free',    emoji: '🥜' },
+  { value: 'halal',       label: 'Halal',       emoji: '☪️' },
+  { value: 'kosher',      label: 'Kosher',      emoji: '✡️' },
+  { value: 'pescatarian', label: 'Pescatarian', emoji: '🐟' },
+];
+const COOK_TIMES = [15, 30, 45, 60];
+const GOAL_OPTIONS = [
+  { value: 'budget',       label: 'Budget-conscious', desc: 'Keep weekly costs down' },
+  { value: 'reduce-waste', label: 'Reduce food waste', desc: 'Use what you have first' },
+  { value: 'save-time',    label: 'Save time',         desc: 'Quick meals, less planning' },
+];
+
+// Populate email (read-only)
+document.getElementById('email-display').value = user.email || '';
+if (user.email_confirmed_at) document.getElementById('verified-badge').style.display = 'inline-flex';
+
+// Populate name
+if (profile?.full_name) document.getElementById('full-name').value = profile.full_name;
+
+// Stepper
+let householdSize = profile?.household_size || 2;
+function renderStepper() { document.getElementById('stepper-val').textContent = householdSize; }
+renderStepper();
+document.getElementById('stepper-minus').addEventListener('click', () => {
+  if (householdSize > 1) { householdSize--; renderStepper(); }
+});
+document.getElementById('stepper-plus').addEventListener('click', () => {
+  if (householdSize < 10) { householdSize++; renderStepper(); }
+});
+
+// Cook time selector
+let selectedCookTime = profile?.default_cook_time || 30;
+const cookGrid = document.getElementById('cook-time-grid');
+COOK_TIMES.forEach(t => {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'option-btn' + (t === selectedCookTime ? ' selected' : '');
+  btn.textContent = t === 60 ? '60 min+' : t + ' min';
+  btn.addEventListener('click', () => {
+    selectedCookTime = t;
+    cookGrid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+  cookGrid.appendChild(btn);
+});
+
+// Dietary restrictions
+let selectedDietary = new Set(profile?.dietary_restrictions || []);
+const restrictGrid = document.getElementById('restrict-grid');
+DIETARY_OPTIONS.forEach(opt => {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'restrict-btn' + (selectedDietary.has(opt.value) ? ' selected' : '');
+  btn.innerHTML = `${opt.emoji} ${opt.label}`;
+  btn.addEventListener('click', () => {
+    if (selectedDietary.has(opt.value)) { selectedDietary.delete(opt.value); btn.classList.remove('selected'); }
+    else { selectedDietary.add(opt.value); btn.classList.add('selected'); }
+  });
+  restrictGrid.appendChild(btn);
+});
+
+// Goals
+let selectedGoals = new Set(profile?.user_goals || []);
+const goalsGrid = document.getElementById('goals-grid');
+GOAL_OPTIONS.forEach(opt => {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'goal-btn' + (selectedGoals.has(opt.value) ? ' selected' : '');
+  btn.innerHTML = `<span class="goal-name">${opt.label}</span><span class="goal-desc">${opt.desc}</span>`;
+  btn.addEventListener('click', () => {
+    if (selectedGoals.has(opt.value)) { selectedGoals.delete(opt.value); btn.classList.remove('selected'); }
+    else { selectedGoals.add(opt.value); btn.classList.add('selected'); }
+  });
+  goalsGrid.appendChild(btn);
+});
+
+// Save profile
+document.getElementById('profile-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn    = document.getElementById('btn-save');
+  const sucEl  = document.getElementById('save-success');
+  const errEl  = document.getElementById('save-error');
+  sucEl.style.display = 'none'; errEl.style.display = 'none';
+  btn.disabled = true; btn.textContent = 'Saving…';
+
+  const { error } = await supabase.from('profiles').upsert({
+    id:                   user.id,
+    email:                user.email,
+    full_name:            document.getElementById('full-name').value.trim(),
+    household_size:       householdSize,
+    default_cook_time:    selectedCookTime,
+    dietary_restrictions: Array.from(selectedDietary),
+    user_goals:           Array.from(selectedGoals),
+    updated_at:           new Date().toISOString(),
+  }, { onConflict: 'id' });
+
+  btn.disabled = false; btn.textContent = 'Save changes';
+
+  if (error) {
+    errEl.textContent = error.message; errEl.style.display = 'block';
+  } else {
+    sucEl.style.display = 'block';
+    setTimeout(() => { sucEl.style.display = 'none'; }, 3000);
+  }
+});
+
+// ── Waitlist / referral card ──────────────────────────────────────────────────
+function renderWaitlistCard(profile) {
+  const el = document.getElementById('waitlist-card-content');
+  const referralUrl = siteUrl + '/r/' + (profile?.referral_code || '');
+
+  if (profile?.waitlist_position) {
+    el.innerHTML = `
+      <p class="card-subtext">You're on the waitlist.</p>
+      <p class="referral-pos">#${profile.waitlist_position}</p>
+      <p class="card-subtext" style="margin-top:8px;">Share your link to move up the waitlist.</p>
+      <div class="referral-url-row">
+        <input class="referral-url-input" readonly value="${referralUrl}" id="referral-url-input">
+        <button class="btn-copy" id="btn-copy-referral" type="button">Copy</button>
+      </div>
+      <p class="card-subtext" style="margin-top:12px;">You've referred ${profile.referral_count || 0} ${profile.referral_count === 1 ? 'person' : 'people'}.</p>`;
+  } else {
+    el.innerHTML = `
+      <p class="card-subtext">You're not on the Dinnrd waitlist yet.</p>
+      <p class="card-subtext" style="margin-bottom:14px;">Join to get early access and move up by referring friends.</p>
+      <button class="btn-primary" style="max-width:200px;" id="btn-join-waitlist" type="button">Join the waitlist</button>
+      <div class="inline-success" id="waitlist-success" style="display:none;margin-top:8px;"></div>`;
+  }
+
+  // Copy button
+  const copyBtn = document.getElementById('btn-copy-referral');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(referralUrl).then(() => {
+        copyBtn.textContent = 'Copied';
+        copyBtn.classList.add('copied');
+        setTimeout(() => { copyBtn.textContent = 'Copy'; copyBtn.classList.remove('copied'); }, 2000);
+      });
+    });
+  }
+
+  // Join waitlist button
+  const joinBtn = document.getElementById('btn-join-waitlist');
+  if (joinBtn) {
+    joinBtn.addEventListener('click', async () => {
+      joinBtn.disabled = true; joinBtn.textContent = 'Joining…';
+      const res = await fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: user.email }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('waitlist-success').textContent = 'You\'re on the waitlist.';
+        document.getElementById('waitlist-success').style.display = 'block';
+        joinBtn.style.display = 'none';
+      } else {
+        joinBtn.disabled = false; joinBtn.textContent = 'Join the waitlist';
+      }
+    });
+  }
+}
+renderWaitlistCard(profile);
+
+// ── Delete account modal ──────────────────────────────────────────────────────
+document.getElementById('btn-delete-account').addEventListener('click', () => {
+  document.getElementById('delete-modal').classList.remove('hidden');
+});
+document.getElementById('btn-cancel-delete').addEventListener('click', () => {
+  document.getElementById('delete-modal').classList.add('hidden');
+});
+document.getElementById('btn-confirm-delete').addEventListener('click', async () => {
+  const btn   = document.getElementById('btn-confirm-delete');
+  const errEl = document.getElementById('delete-error');
+  btn.disabled = true; btn.textContent = 'Deleting…';
+  errEl.textContent = '';
+
+  const res  = await fetch('/.netlify/functions/delete-account', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + session.access_token },
+  });
+  const data = await res.json();
+
+  if (data.success) {
+    await supabase.auth.signOut();
+    location.replace('/');
+  } else {
+    errEl.textContent = data.error || 'Something went wrong. Try again.';
+    btn.disabled = false; btn.textContent = 'Delete account';
+  }
+});
+</script>
+</body>
+</html>
