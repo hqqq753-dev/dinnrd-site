@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Dinnrd early</title>
+  <link rel="stylesheet" href="/css/auth.css">
+  <style>
+    body.ref-body {
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 48px 24px;
+    }
+    .ref-card {
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+    }
+    .ref-wordmark {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: #fff;
+      letter-spacing: -1px;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 40px;
+    }
+    .ref-wordmark span { color: var(--orange); }
+    .ref-heading {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .ref-subline {
+      font-size: 16px;
+      color: #a8c4b0;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .btn-ref {
+      display: inline-block;
+      height: 52px;
+      line-height: 52px;
+      padding: 0 36px;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-ref:hover { background: var(--orange-hover); }
+    .btn-ref:active { transform: scale(0.97); }
+  </style>
+</head>
+<body class="ref-body">
+
+<div class="ref-card">
+  <a href="/" class="ref-wordmark">Dinnr<span>d</span></a>
+  <h1 class="ref-heading">You've been invited to join Dinnrd early.</h1>
+  <p class="ref-subline">Stop staring at the fridge. Sign up now and get first access.</p>
+  <a href="/signup" class="btn-ref" id="signup-link">Create account</a>
+</div>
+
+<script>
+  // Read referral code from URL path: /r/ABC123
+  const code = window.location.pathname.split('/').filter(Boolean).pop();
+  if (code && code !== 'r') {
+    document.getElementById('signup-link').href = '/signup?ref=' + encodeURIComponent(code);
+  }
+</script>
+</body>
+</html>
