@@ -1,0 +1,9 @@
+{
+  "name": "dinnrd-site",
+  "version": "1.0.0",
+  "description": "Dinnrd landing page and account system",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "stripe": "^14.21.0"
+  }
+}

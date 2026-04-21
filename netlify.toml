@@ -4,3 +4,9 @@
 
 [functions]
   node_bundler = "esbuild"
+
+# Serve r/index.html for all /r/[code] paths
+[[redirects]]
+  from = "/r/*"
+  to   = "/r/index.html"
+  status = 200
