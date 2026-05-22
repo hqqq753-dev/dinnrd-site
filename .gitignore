@@ -1,0 +1,5 @@
+# Local Netlify folder
+.netlify
+.DS_Store
+.superpowers/
+netlify/.DS_Store
