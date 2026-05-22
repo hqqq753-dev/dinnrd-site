@@ -202,7 +202,7 @@ body {
 /* ══════════════════════════════════════════════════════════════════════
    SECTION 2 — Problem cards
 ═══════════════════════════════════════════════════════════════════════ */
-#problems { background: var(--cream); padding: 104px 24px 116px; position: relative; overflow: hidden; }
+#problems { background: var(--cream); padding: 104px 24px 56px; position: relative; overflow: hidden; }
 .problems-header { text-align: center; margin-bottom: 68px; }
 .problems-eyebrow {
   display: block; font-size: 12px; text-transform: uppercase;
@@ -285,7 +285,7 @@ body {
 /* ══════════════════════════════════════════════════════════════════════
    Stats strip
 ═══════════════════════════════════════════════════════════════════════ */
-#stats-strip { background: var(--cream); padding: 80px 24px 96px; position: relative; overflow: hidden; }
+#stats-strip { background: var(--cream); padding: 40px 24px 96px; position: relative; overflow: hidden; }
 .stats-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; align-items: center; }
 .stat-divider { width: 1px; background: rgba(29,77,46,0.1); align-self: stretch; }
 .stat-num {
@@ -413,8 +413,8 @@ footer a:hover { text-decoration: underline; color: rgba(250,247,242,0.9); }
   .stats-inner { grid-template-columns: 1fr; gap: 40px; }
   .stat-divider { display: none; }
   .feat          { padding: 64px 24px; }
-  #problems      { padding: 64px 24px 72px; }
-  #stats-strip   { padding: 56px 24px 64px; }
+  #problems      { padding: 64px 24px 36px; }
+  #stats-strip   { padding: 28px 24px 64px; }
   #mid-cta       { padding: 72px 24px; }
   .feat-text     { order: -1; }
 }
