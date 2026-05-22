@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dinnrd · Stop staring at the fridge.</title>
-  <meta name="description" content="Dinnrd plans dinners for your whole household, tracks what's in your pantry, and builds your grocery list. iOS app coming soon. Join the waitlist.">
+  <meta name="description" content="Dinnrd plans your week of dinners around what you have, tells you what to cook before it goes off, and builds your grocery list. iOS app coming soon.">
   <link rel="canonical" href="https://dinnrd.com/">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dinnrd">
   <meta property="og:title" content="Dinnrd · Stop staring at the fridge.">
-  <meta property="og:description" content="One tap plans your whole week. Nothing in the fridge goes to waste.">
+  <meta property="og:description" content="Dinnrd plans your week of dinners around what you have, tells you what to cook before it goes off, and builds your grocery list.">
   <meta property="og:url" content="https://dinnrd.com/">
   <meta property="og:image" content="https://dinnrd.com/og-image.png">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@getdinnrd">
   <meta name="twitter:title" content="Dinnrd · Stop staring at the fridge.">
-  <meta name="twitter:description" content="One tap plans your whole week. Nothing in the fridge goes to waste.">
+  <meta name="twitter:description" content="Dinnrd plans your week of dinners around what you have, tells you what to cook before it goes off, and builds your grocery list.">
   <meta name="twitter:image" content="https://dinnrd.com/og-image.png">
   <meta name="theme-color" content="#1D4D2E">
   <link rel="icon" href="/favicon.ico">
@@ -32,12 +32,22 @@
         "@type": "SoftwareApplication",
         "name": "Dinnrd",
         "applicationCategory": "LifestyleApplication",
+        "applicationSubCategory": "FoodAndDrinkApplication",
         "operatingSystem": "iOS",
-        "offers": {
-          "@type": "Offer",
-          "price": "5.00",
-          "priceCurrency": "USD"
-        },
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": "5.00",
+            "priceCurrency": "USD",
+            "description": "Monthly subscription"
+          },
+          {
+            "@type": "Offer",
+            "price": "48.00",
+            "priceCurrency": "USD",
+            "description": "Annual subscription"
+          }
+        ],
         "description": "Dinnrd plans dinners for your whole household, tracks what's in your pantry, and builds your grocery list.",
         "url": "https://dinnrd.com"
       },
@@ -51,7 +61,7 @@
   </script>
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_t9xcrDdCyeuhzjQSGnvax73RTEDGKBuGuhk9j7iGmFoF', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+    posthog.init('phc_t9xcrDdCyeuhzjQSGnvax73RTEDGKBuGuhk9j7iGmFoF', { api_host: 'https://us.i.posthog.com', person_profiles: 'always' });
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -715,7 +725,7 @@
             <input type="email" id="hero-email" placeholder="Your email address" autocomplete="email" inputmode="email" aria-label="Email address">
             <button id="hero-btn" type="button" onclick="submitForm('hero')">Save my spot</button>
           </div>
-          <p class="hero-note" id="hero-note">Lock in $5/mo &nbsp;·&nbsp; iOS &nbsp;·&nbsp; First 3 months free for beta</p>
+          <p class="hero-note" id="hero-note">First 500 get 3 months free &nbsp;·&nbsp; $5/mo as a beta tester &nbsp;·&nbsp; iOS</p>
           <div class="waitlist-count-wrap" id="hero-count-wrap"><span id="hero-count"></span> people on the list</div>
           <div class="form-error" id="hero-error" aria-live="polite"></div>
         </div>
@@ -728,7 +738,7 @@
         <div class="iphone" style="transform:rotate(-4deg);" aria-label="Dinnrd meal plan screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
           <div class="iphone-screen">
-            <img src="screenshots/meal-plan.png" alt="Dinnrd meal plan screen" class="iphone-screenshot">
+            <img src="screenshots/meal-plan1.png" alt="Dinnrd meal plan screen" class="iphone-screenshot">
           </div>
         </div>
       </div>
@@ -923,17 +933,17 @@
 
       <div class="faq-item reveal">
         <h3 class="faq-q">How much does it cost?</h3>
-        <p class="faq-a">$5 a month or $40 a year. Sign up now and your price locks in at that rate forever. No price hikes, no surprises.</p>
+        <p class="faq-a">$5 a month or $48 a year. The first 500 people on the waitlist lock in that rate as their beta tester price. No price hikes, no surprises.</p>
       </div>
 
       <div class="faq-item reveal">
         <h3 class="faq-q">Is there a free trial?</h3>
-        <p class="faq-a">Beta testers get their first 3 months free. After that, your early adopter pricing kicks in and stays there.</p>
+        <p class="faq-a">The first 500 people on the waitlist get their first 3 months free. After that, your beta tester pricing kicks in and stays there.</p>
       </div>
 
       <div class="faq-item reveal">
         <h3 class="faq-q">What happens after I join the waitlist?</h3>
-        <p class="faq-a">We'll reach out when early access opens on TestFlight. You get 3 months free to try it properly, then $5/mo after that. Your price locks in the moment you sign up.</p>
+        <p class="faq-a">We'll reach out when early access opens on TestFlight. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Your beta tester price locks in the moment you sign up.</p>
       </div>
 
       <div class="faq-item reveal">
@@ -965,8 +975,8 @@
 ═══════════════════════════════════════════════════════════════════════ -->
 <section id="mid-cta" aria-label="Join waitlist">
   <span class="mid-cta-eyebrow reveal">Early access</span>
-  <h2 class="mid-cta-h reveal">35 hours a year deciding what's for dinner.<br>Get them back.</h2>
-  <p class="mid-cta-sub reveal">Launching on iOS soon. Join the waitlist and lock in $5/mo for life. First 3 months free for beta testers.</p>
+  <h2 class="mid-cta-h reveal">You spend 35 hours a year deciding what's for dinner. Get them back.</h2>
+  <p class="mid-cta-sub reveal">Launching on iOS soon. The first 500 on the waitlist get 3 months free, then $5/mo or $48/yr as a beta tester.</p>
   <div class="reveal">
     <div id="mid-wrap" class="email-form-wrap">
       <div class="email-row">
@@ -980,7 +990,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Harbour Labs LLC &nbsp;·&nbsp; <a href="https://harbourlabs.co" target="_blank" rel="noopener">Harbour Labs</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a></p>
+  <p>© 2026 Harbour Labs LLC &nbsp;·&nbsp; <a href="https://harbourlabs.co" target="_blank" rel="noopener">Harbour Labs</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a></p>
   <p style="margin-top:8px;">
     <a href="https://instagram.com/getdinnrd" target="_blank" rel="noopener" aria-label="Dinnrd on Instagram">Instagram</a>
     &nbsp;·&nbsp;
