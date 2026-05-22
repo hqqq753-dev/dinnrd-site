@@ -295,7 +295,7 @@ body {
 .stat-num span { color: var(--orange); }
 .stat-label { font-size: 14px; color: var(--text-muted); line-height: 1.55; max-width: 180px; margin: 0 auto; }
 .stat-footnote { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 28px; opacity: 0.65; max-width: 880px; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; gap: 4px; }
-.stat-ref { font-size: 0.55em; vertical-align: super; color: var(--orange); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.stat-ref { font-size: 11px; vertical-align: super; color: var(--orange); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
 
 /* ══════════════════════════════════════════════════════════════════════
    Mid-page CTA
