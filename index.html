@@ -648,7 +648,7 @@
   <div class="nav-right" id="nav-right"></div>
 </nav>
 
-<div id="signin-modal" role="dialog" aria-modal="true" aria-label="Sign in">
+<div id="signin-modal" role="dialog" aria-modal="true" aria-label="Sign in" inert>
   <div class="signin-card">
     <button class="signin-close" id="modal-close" aria-label="Close">×</button>
     <a href="/" class="signin-wordmark">Dinn<span>rd</span></a>
@@ -1236,21 +1236,31 @@
     return _siteUrl + '/auth/callback?redirect=' + encodeURIComponent(location.pathname);
   }
 
+  function openModal() {
+    modal.removeAttribute('inert');
+    modal.classList.add('open');
+    document.getElementById('modal-email').focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    setTimeout(() => modal.setAttribute('inert', ''), 200);
+  }
+
   async function handleSignInClick() {
     await loadSupabase();
     try {
       const { data: { session } } = await _supabase.auth.getSession();
       if (session) { showLoggedIn(session.user); return; }
     } catch (_) {}
-    modal.classList.add('open');
-    document.getElementById('modal-email').focus();
+    openModal();
   }
 
   document.getElementById('nav-signin-btn').addEventListener('click', handleSignInClick);
 
-  document.getElementById('modal-close').addEventListener('click', () => modal.classList.remove('open'));
-  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   document.getElementById('modal-apple').addEventListener('click', async () => {
     await loadSupabase();
@@ -1275,7 +1285,7 @@
       modalErr.textContent = error.message.includes('Invalid login credentials') ? 'Incorrect email or password.' : error.message;
       btn.disabled = false; btn.textContent = 'Sign in'; return;
     }
-    modal.classList.remove('open');
+    closeModal();
     showLoggedIn(data.user);
   });
 
