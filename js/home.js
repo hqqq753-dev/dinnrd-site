@@ -152,7 +152,7 @@ document.getElementById('mid-btn').addEventListener('click', () => submitForm('m
   if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') submitForm(prefix); });
 });
 
-// ── Stat flash animation ───────────────────────────────────────────────
+// ── Stat animation ────────────────────────────────────────────────────
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function flashStatNum(statNum) {
@@ -163,11 +163,29 @@ function flashStatNum(statNum) {
   statNum.addEventListener('animationend', () => statNum.classList.remove('flashing'), { once: true });
 }
 
+function countUp(el) {
+  if (prefersReducedMotion) return;
+  const target = parseInt(el.dataset.target, 10);
+  const dur = 1800;
+  const t0 = performance.now();
+  function step(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(eased * target).toLocaleString();
+    if (p < 1) { requestAnimationFrame(step); }
+    else { flashStatNum(el.closest('.stat-num')); }
+  }
+  requestAnimationFrame(step);
+}
+
 const counterObs = new IntersectionObserver((entries, obs) => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
-    const statNums = Array.from(e.target.querySelectorAll('.stat-num'));
-    statNums.forEach((sn, i) => setTimeout(() => flashStatNum(sn), i * 200));
+    const statItems = Array.from(e.target.querySelectorAll('.stats-inner > div'));
+    statItems.forEach((item, i) => {
+      const sv = item.querySelector('.stat-val[data-target]');
+      if (sv) setTimeout(() => countUp(sv), i * 180);
+    });
     obs.unobserve(e.target);
   });
 }, { threshold: 0.45 });
