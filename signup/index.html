@@ -11,7 +11,7 @@
 <div class="auth-card">
   <a href="/" class="auth-wordmark">Dinnr<span>d</span></a>
   <h1 class="auth-heading">Create your account.</h1>
-  <p class="auth-subline">7 days free, then $4.99/month. Cancel anytime.</p>
+  <p class="auth-subline">$5/mo or $48/yr &nbsp;·&nbsp; first 500 get 3 months free</p>
 
   <button class="btn-oauth btn-apple" id="btn-apple" type="button">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -36,11 +36,13 @@
 
   <form id="signup-form" novalidate>
     <div class="field-group">
+      <label for="email" class="visually-hidden">Email address</label>
       <input type="email" id="email" class="input-field" placeholder="Email address"
              autocomplete="email" inputmode="email" required>
       <div class="field-error" id="email-error"></div>
     </div>
     <div class="field-group">
+      <label for="password" class="visually-hidden">Password (minimum 8 characters)</label>
       <div class="input-pw-wrap">
         <input type="password" id="password" class="input-field" placeholder="Password (min 8 characters)"
                autocomplete="new-password" minlength="8" required>
@@ -56,6 +58,7 @@
       <div class="field-error" id="pw-error"></div>
     </div>
     <div class="field-group">
+      <label for="confirm-password" class="visually-hidden">Confirm password</label>
       <div class="input-pw-wrap">
         <input type="password" id="confirm-password" class="input-field" placeholder="Confirm password"
                autocomplete="new-password" required>

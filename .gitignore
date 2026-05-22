@@ -2,4 +2,8 @@
 .netlify
 .DS_Store
 .superpowers/
-netlify/.DS_Store
+*.orig
+*.textClipping
+**/originals/
+app screenshots/
+docs/

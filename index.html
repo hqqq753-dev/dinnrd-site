@@ -12,13 +12,13 @@
   <meta property="og:title" content="Dinnrd · Stop staring at the fridge.">
   <meta property="og:description" content="Dinnrd plans your week of dinners around what you have, tells you what to cook before it goes off, and builds your grocery list.">
   <meta property="og:url" content="https://dinnrd.com/">
-  <meta property="og:image" content="https://dinnrd.com/og-image.png">
+  <meta property="og:image" content="https://dinnrd.com/og-image.jpg">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@getdinnrd">
   <meta name="twitter:title" content="Dinnrd · Stop staring at the fridge.">
   <meta name="twitter:description" content="Dinnrd plans your week of dinners around what you have, tells you what to cook before it goes off, and builds your grocery list.">
-  <meta name="twitter:image" content="https://dinnrd.com/og-image.png">
+  <meta name="twitter:image" content="https://dinnrd.com/og-image.jpg">
   <meta name="theme-color" content="#1D4D2E">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -34,620 +34,79 @@
         "applicationCategory": "LifestyleApplication",
         "applicationSubCategory": "FoodAndDrinkApplication",
         "operatingSystem": "iOS",
-        "offers": [
-          {
-            "@type": "Offer",
-            "price": "5.00",
-            "priceCurrency": "USD",
-            "description": "Monthly subscription"
-          },
-          {
-            "@type": "Offer",
-            "price": "48.00",
-            "priceCurrency": "USD",
-            "description": "Annual subscription"
-          }
-        ],
-        "description": "Dinnrd plans dinners for your whole household, tracks what's in your pantry, and builds your grocery list.",
+        "description": "Dinnrd plans dinners for the week, tracks what's in your pantry, and builds your grocery list.",
         "url": "https://dinnrd.com"
       },
       {
         "@type": "Organization",
         "name": "Harbour Labs LLC",
         "url": "https://harbourlabs.co"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does it cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "$5 a month or $48 a year. The first 500 people on the waitlist lock in that rate as their beta tester price. No price hikes, no surprises."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The first 500 people on the waitlist get their first 3 months free. After that, your beta tester pricing kicks in and stays there."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens after I join the waitlist?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We'll email you the moment TestFlight opens. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I add things to my pantry?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mostly by talking to it. Say something like 'we have three tins of tomatoes and a block of cheddar' and Dinnrd parses it straight in. You can also type manually if you prefer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I save my own recipes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Dinnrd has a cookbooks section where you can save, organize, and search your own recipes. Anything you add goes straight into the meal planning rotation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What platforms is Dinnrd on?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "iOS only right now. Android is on the roadmap."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data private?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your meal plans, pantry, and grocery lists live on your account. We don't sell your data."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
-  <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_t9xcrDdCyeuhzjQSGnvax73RTEDGKBuGuhk9j7iGmFoF', { api_host: 'https://us.i.posthog.com', person_profiles: 'always' });
-  </script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --cream:         #FAF7F2;
-      --green-dark:    #1D4D2E;
-      --green-soft:    #2D6A3F;
-      --green-muted:   #a8c4b0;
-      --orange:        #C4622D;
-      --text-dark:     #1A1A1A;
-      --text-muted:    #6B6B6B;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* ── Grain texture ──────────────────────────────────────────────────── */
-    .has-grain { position: relative; }
-    .has-grain::before {
-      content: '';
-      position: absolute; inset: 0;
-      pointer-events: none; z-index: 0; opacity: 0.045;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
-    }
-
-    /* ── Scroll reveal ──────────────────────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.75s cubic-bezier(0.34, 1.18, 0.64, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── Email form ─────────────────────────────────────────────────────── */
-    .email-form-wrap { width: 100%; max-width: 480px; margin: 0 auto; }
-    .email-row {
-      display: flex; height: 52px; border-radius: 12px;
-      overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.20);
-    }
-    .email-row input[type="email"] {
-      flex: 1; min-width: 0; padding: 0 18px; font-size: 15px;
-      font-family: inherit; color: var(--text-dark); background: var(--cream);
-      border: none; outline: none; transition: box-shadow 0.2s;
-    }
-    .email-row input[type="email"]:focus { box-shadow: inset 0 0 0 2px var(--orange); }
-    .email-row input[type="email"]::placeholder { color: #999; }
-    .email-row button {
-      flex-shrink: 0; padding: 0 24px; font-size: 14px;
-      font-family: Georgia, "Times New Roman", serif; font-weight: 700;
-      color: var(--cream); background: var(--orange); border: none;
-      cursor: pointer; white-space: nowrap; transition: background 0.2s, transform 0.15s ease;
-      position: relative; overflow: hidden;
-    }
-    .email-row button:hover   { background: #cf6e3f; }
-    .email-row button:active  { transform: scale(0.97); }
-    .email-row button:disabled { opacity: 0.7; cursor: not-allowed; }
-    .form-error { font-size: 13px; color: var(--orange); text-align: center; margin-top: 8px; min-height: 20px; }
-    .form-success { font-size: 16px; color: var(--cream); text-align: center; padding: 16px 0; }
-
-    /* ── Wave dividers ──────────────────────────────────────────────────── */
-    .wave-divider { position: absolute; bottom: 0; left: 0; right: 0; height: 60px; overflow: hidden; line-height: 0; }
-    .wave-top     { bottom: auto; top: 0; }
-    .wave-divider svg { display: block; width: 100%; height: 100%; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       iPhone frame
-    ═══════════════════════════════════════════════════════════════════════ */
-    .iphone {
-      position: relative;
-      width: 252px; height: 545px;
-      background: #0d0d0d;
-      border-radius: 52px;
-      border: 8px solid #191919;
-      flex-shrink: 0;
-      overflow: visible;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 40px 80px rgba(0,0,0,0.55);
-    }
-    .iphone::before { /* power button */
-      content: ''; position: absolute;
-      right: -11px; top: 144px;
-      width: 3px; height: 64px;
-      background: #191919; border-radius: 0 2px 2px 0;
-    }
-    .iphone::after { /* vol up */
-      content: ''; position: absolute;
-      left: -11px; top: 112px;
-      width: 3px; height: 38px;
-      background: #191919; border-radius: 2px 0 0 2px;
-    }
-    .iphone-vol-down {
-      position: absolute; left: -11px; top: 162px;
-      width: 3px; height: 38px; background: #191919; border-radius: 2px 0 0 2px;
-    }
-    .iphone-island {
-      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-      width: 90px; height: 26px; background: #0d0d0d; border-radius: 20px; z-index: 10;
-    }
-    .iphone-screen {
-      position: absolute; inset: 0; border-radius: 44px; overflow: hidden; background: #111;
-    }
-    .iphone-screenshot {
-      width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
-    }
-
-    /* ── Glow behind phones ─────────────────────────────────────────────── */
-    .iphone-glow {
-      position: absolute; width: 340px; height: 340px; border-radius: 50%;
-      pointer-events: none; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0;
-    }
-    .glow-dark  { background: radial-gradient(circle, rgba(45,106,63,0.50) 0%, transparent 65%); }
-    .glow-cream { background: radial-gradient(circle, rgba(45,106,63,0.14) 0%, transparent 65%); }
-    .phone-col {
-      flex-shrink: 0; display: flex; justify-content: center;
-      align-items: center; position: relative;
-    }
-    .phone-col .iphone { position: relative; z-index: 1; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       SECTION 1 — Hero (split layout)
-    ═══════════════════════════════════════════════════════════════════════ */
-    #hero {
-      background: var(--green-dark);
-      min-height: 100dvh; position: relative; overflow: hidden;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .hero-ambient {
-      position: absolute; right: 12%; top: 50%; transform: translateY(-50%);
-      width: 520px; height: 520px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,63,0.50) 0%, transparent 65%);
-      pointer-events: none; z-index: 0;
-    }
-    .hero-ambient-left {
-      position: absolute; left: -80px; top: 20%;
-      width: 360px; height: 360px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,63,0.18) 0%, transparent 65%);
-      pointer-events: none; z-index: 0;
-    }
-    .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1120px; margin: 0 auto; width: 100%;
-      padding: 110px 56px 96px;
-      display: flex; align-items: center; gap: 88px;
-    }
-    .hero-text { flex: 1; min-width: 0; }
-    .hero-wordmark {
-      font-family: Georgia, "Times New Roman", serif; font-weight: 700;
-      font-size: clamp(56px, 8vw, 76px); color: var(--cream);
-      letter-spacing: -2.5px; line-height: 1; margin-bottom: 20px;
-    }
-    .hero-wordmark span { color: var(--orange); }
-    .hero-tagline {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(20px, 3vw, 26px); font-weight: 400; font-style: italic;
-      color: rgba(250,247,242,0.65); margin-bottom: 40px; line-height: 1.35;
-    }
-    .hero-tagline em { color: var(--cream); font-style: normal; }
-    .hero-benefits { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
-    .hero-benefit {
-      display: flex; align-items: flex-start; gap: 14px;
-      font-size: 15.5px; color: rgba(250,247,242,0.75); line-height: 1.55;
-    }
-    .hero-benefit-icon {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: rgba(196,98,45,0.22); border: 1.5px solid rgba(196,98,45,0.50);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
-    }
-    .hero-form-wrap { max-width: 440px; }
-    .hero-note { font-size: 12px; color: rgba(250,247,242,0.34); margin-top: 12px; letter-spacing: 0.03em; }
-    .hero-device-col {
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative;
-      animation: hero-float 5s ease-in-out infinite; will-change: transform;
-    }
-    .hero-device-col .iphone {
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.06),
-        0 48px 100px rgba(0,0,0,0.6),
-        0 0 100px rgba(29,77,46,0.35);
-    }
-    .hero-device-glow {
-      position: absolute; width: 440px; height: 440px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,63,0.55) 0%, transparent 65%);
-      top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 0;
-    }
-    .hero-device-col .iphone { position: relative; z-index: 1; }
-    .scroll-cue {
-      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-      background: none; border: none; cursor: pointer; padding: 8px; z-index: 2;
-      animation: cue-pulse 1.5s ease-in-out infinite;
-    }
-    .scroll-cue svg { width: 36px; height: 36px; display: block; }
-    @keyframes cue-pulse {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(7px); }
-    }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       SECTION 2 — Problem cards
-    ═══════════════════════════════════════════════════════════════════════ */
-    #problems { background: var(--cream); padding: 104px 24px 116px; position: relative; overflow: hidden; }
-    .problems-header { text-align: center; margin-bottom: 68px; }
-    .problems-eyebrow {
-      display: block; font-size: 12px; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--orange); font-weight: 600; margin-bottom: 14px;
-    }
-    .problems-heading {
-      font-family: Georgia, "Times New Roman", serif; font-weight: 700;
-      font-size: clamp(32px, 5vw, 48px); color: var(--green-dark); line-height: 1.15;
-    }
-    .problems-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .prob-card {
-      background: var(--green-dark); border-radius: 28px; padding: 52px 44px;
-      position: relative; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .prob-card:hover { transform: translateY(-5px); box-shadow: 0 24px 56px rgba(29,77,46,0.22); }
-    .prob-card::before {
-      content: ''; position: absolute; top: -70px; right: -70px;
-      width: 220px; height: 220px; border-radius: 50%;
-      background: rgba(45,106,63,0.4); pointer-events: none;
-    }
-    .prob-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(168,196,176,0.18), transparent); pointer-events: none;
-    }
-    .prob-icon {
-      width: 84px; height: 84px; border-radius: 22px;
-      background: rgba(196,98,45,0.22); border: 2px solid rgba(196,98,45,0.55);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 32px; position: relative; z-index: 1;
-    }
-    .prob-quote {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(18px, 2.2vw, 22px); font-weight: 700;
-      color: var(--cream); line-height: 1.35; margin-bottom: 18px; position: relative; z-index: 1;
-    }
-    .prob-stat { font-size: 14px; color: var(--green-muted); line-height: 1.75; margin-bottom: 36px; position: relative; z-index: 1; }
-    .prob-solve {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(196,98,45,0.26); border: 1.5px solid rgba(196,98,45,0.68);
-      border-radius: 8px; padding: 11px 20px;
-      font-size: 14px; color: #FF9A5C; font-weight: 600; position: relative; z-index: 1;
-    }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Feature sections
-    ═══════════════════════════════════════════════════════════════════════ */
-    .feat { padding: 104px 24px; position: relative; overflow: hidden; }
-    .feat.cream { background: var(--cream); }
-    .feat.dark  { background: var(--green-dark); }
-    .feat-inner { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; gap: 80px; }
-    .feat-inner.flip { flex-direction: row-reverse; }
-    .feat-text { flex: 1; min-width: 0; max-width: 480px; }
-    .overline {
-      display: block; font-size: 12px; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--orange); margin-bottom: 14px;
-      opacity: 0; transform: translateX(-20px); transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    .overline.visible { opacity: 1; transform: translateX(0); }
-    .feat-h {
-      font-family: Georgia, "Times New Roman", serif; font-weight: 700;
-      font-size: clamp(28px, 4vw, 38px); line-height: 1.2; margin-bottom: 18px;
-    }
-    .feat.cream .feat-h { color: var(--green-dark); }
-    .feat.dark  .feat-h { color: var(--cream); }
-    .feat-p { font-size: 16px; line-height: 1.8; max-width: 480px; }
-    .feat.cream .feat-p { color: var(--text-muted); }
-    .feat.dark  .feat-p { color: var(--green-muted); }
-    .feat-pill {
-      display: inline-flex; align-items: center; gap: 7px; margin-top: 28px;
-      background: rgba(196,98,45,0.12); border: 1px solid rgba(196,98,45,0.25);
-      border-radius: 100px; padding: 8px 18px; font-size: 13px; font-weight: 600; color: var(--orange);
-    }
-    .feat.dark .feat-pill { background: rgba(196,98,45,0.26); border-color: rgba(196,98,45,0.65); color: #FF9A5C; }
-    .phone-enter-left  { opacity: 0; transform: translateX(-64px); transition: opacity 0.85s ease-out, transform 0.95s cubic-bezier(0.34, 1.38, 0.64, 1); }
-    .phone-enter-right { opacity: 0; transform: translateX(64px);  transition: opacity 0.85s ease-out, transform 0.95s cubic-bezier(0.34, 1.38, 0.64, 1); }
-    .phone-enter-left.visible, .phone-enter-right.visible { opacity: 1; transform: translateX(0); }
-    .feat-text-reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease-out 0.12s, transform 0.75s cubic-bezier(0.34, 1.18, 0.64, 1) 0.12s; }
-    .feat-text-reveal.visible { opacity: 1; transform: translateY(0); }
-    .phone-wrap { transition: transform 0.05s linear; will-change: transform; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Stats strip
-    ═══════════════════════════════════════════════════════════════════════ */
-    #stats-strip { background: var(--cream); padding: 80px 24px 96px; position: relative; overflow: hidden; }
-    .stats-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
-    .stat-divider { width: 1px; background: rgba(29,77,46,0.1); align-self: stretch; }
-    .stat-num {
-      font-family: Georgia, "Times New Roman", serif; font-weight: 700;
-      font-size: clamp(40px, 5.5vw, 56px); color: var(--green-dark); line-height: 1; margin-bottom: 12px;
-    }
-    .stat-num span { color: var(--orange); }
-    .stat-label { font-size: 14px; color: var(--text-muted); line-height: 1.55; max-width: 180px; margin: 0 auto; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Mid-page CTA
-    ═══════════════════════════════════════════════════════════════════════ */
-    #mid-cta {
-      background: var(--cream); padding: 112px 24px; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    #mid-cta::before {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(45,106,63,0.05) 0%, transparent 70%);
-      transform: translate(-50%, -50%); pointer-events: none;
-    }
-    #mid-cta > * { position: relative; z-index: 1; }
-    .mid-cta-eyebrow { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--orange); font-weight: 600; margin-bottom: 16px; }
-    .mid-cta-h { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--green-dark); margin-bottom: 14px; line-height: 1.2; }
-    .mid-cta-sub { font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 440px; margin: 0 auto 40px; }
-    #mid-cta .form-success { color: var(--green-dark); }
-    #mid-cta .email-row input[type="email"] { background: #fff; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Footer
-    ═══════════════════════════════════════════════════════════════════════ */
-    footer { background: #163d22; padding: 28px 24px; text-align: center; }
-    footer p { font-size: 13px; color: var(--green-muted); }
-    footer a { color: var(--green-muted); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Nav
-    ═══════════════════════════════════════════════════════════════════════ */
-    #site-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 56px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; background: rgba(29,77,46,0); transition: background 0.3s;
-    }
-    #site-nav.scrolled { background: rgba(29,77,46,0.97); backdrop-filter: blur(8px); }
-    .nav-wordmark { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 20px; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
-    .nav-wordmark span { color: var(--orange); }
-    .nav-right { display: flex; align-items: center; gap: 8px; }
-    .nav-btn-signin { font-size: 13px; font-family: inherit; font-weight: 500; color: rgba(255,255,255,0.8); background: none; border: none; cursor: pointer; padding: 6px 10px; text-decoration: none; transition: color 0.15s; }
-    .nav-btn-signin:hover { color: #fff; }
-    .nav-btn-signup { font-size: 13px; font-family: Georgia, "Times New Roman", serif; font-weight: 700; color: var(--cream); background: var(--orange); border: none; border-radius: 6px; padding: 7px 14px; cursor: pointer; text-decoration: none; transition: background 0.15s, transform 0.1s; }
-    .nav-btn-signup:hover { background: #cf6e3f; }
-    .nav-btn-signup:active { transform: scale(0.97); }
-    .nav-user { font-size: 13px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 10px; }
-    .nav-account-link { font-size: 13px; font-family: inherit; font-weight: 500; color: #fff; text-decoration: none; background: rgba(255,255,255,0.12); border-radius: 6px; padding: 6px 12px; transition: background 0.15s; }
-    .nav-account-link:hover { background: rgba(255,255,255,0.2); }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Sign-in modal
-    ═══════════════════════════════════════════════════════════════════════ */
-    #signin-modal {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px; z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.2s;
-    }
-    #signin-modal.open { opacity: 1; pointer-events: auto; }
-    .signin-card { background: #fff; border-radius: 16px; padding: 36px 32px; width: 100%; max-width: 400px; position: relative; }
-    @media (max-width: 480px) { .signin-card { padding: 28px 20px; } }
-    .signin-close { position: absolute; top: 14px; right: 16px; background: none; border: none; font-size: 20px; cursor: pointer; color: #999; line-height: 1; padding: 4px 8px; }
-    .signin-close:hover { color: #333; }
-    .signin-wordmark { display: block; font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 22px; color: var(--green-dark); text-align: center; text-decoration: none; margin-bottom: 20px; }
-    .signin-wordmark span { color: var(--orange); }
-    .signin-heading { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 700; color: var(--text-dark); text-align: center; margin-bottom: 20px; }
-    .signin-oauth { width: 100%; height: 44px; border-radius: 8px; border: 1.5px solid #e8e0d4; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 13px; font-family: inherit; font-weight: 500; cursor: pointer; margin-bottom: 8px; transition: background 0.15s; }
-    .signin-oauth.apple  { background: #000; color: #fff; border-color: #000; }
-    .signin-oauth.apple:hover  { background: #1a1a1a; }
-    .signin-oauth.google { background: #fff; color: var(--text-dark); }
-    .signin-oauth.google:hover { background: #f7f7f7; }
-    .signin-divider { display: flex; align-items: center; gap: 10px; margin: 12px 0; font-size: 12px; color: #999; }
-    .signin-divider::before, .signin-divider::after { content: ''; flex: 1; height: 1px; background: #e8e0d4; }
-    .signin-input { width: 100%; height: 44px; padding: 0 12px; font-size: 14px; font-family: inherit; background: #FAF7F2; border: 1.5px solid #e8e0d4; border-radius: 8px; color: var(--text-dark); outline: none; margin-bottom: 10px; -webkit-appearance: none; transition: border-color 0.2s; }
-    .signin-input:focus { border-color: var(--green-dark); }
-    .signin-input::placeholder { color: #bbb; }
-    .signin-submit { width: 100%; height: 44px; border-radius: 8px; border: none; background: var(--orange); color: var(--cream); font-size: 14px; font-family: Georgia, "Times New Roman", serif; font-weight: 700; cursor: pointer; margin-top: 4px; transition: background 0.2s; }
-    .signin-submit:hover:not(:disabled) { background: #cf6e3f; }
-    .signin-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-    .signin-error { font-size: 12px; color: var(--orange); text-align: center; margin-top: 8px; min-height: 16px; }
-    .signin-footer { font-size: 12px; color: #999; text-align: center; margin-top: 14px; }
-    .signin-footer a { color: var(--green-dark); text-decoration: none; font-weight: 500; }
-    .signin-footer a:hover { text-decoration: underline; }
-
-    /* ── Scroll progress ─────────────────────────────────────────────────── */
-    #scroll-progress { position: fixed; left: 0; top: 0; width: 2px; height: 100%; background: var(--orange); transform-origin: top center; transform: scaleY(0); z-index: 9999; pointer-events: none; }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       Responsive
-    ═══════════════════════════════════════════════════════════════════════ */
-    @media (max-width: 880px) {
-      .hero-inner { flex-direction: column; align-items: center; text-align: center; padding: 104px 28px 80px; gap: 56px; }
-      .hero-text { display: flex; flex-direction: column; align-items: center; }
-      .hero-benefit { text-align: left; }
-      .hero-form-wrap { max-width: 100%; }
-      .hero-ambient { display: none; }
-    }
-    @media (max-width: 740px) {
-      .feat-inner, .feat-inner.flip { flex-direction: column; gap: 48px; }
-      .feat-p { max-width: 100%; }
-      .iphone { width: 212px; height: 458px; border-radius: 44px; }
-      .iphone-screen { border-radius: 36px; }
-      .iphone-island { width: 76px; height: 22px; top: 14px; }
-      .problems-grid { grid-template-columns: 1fr; }
-      .prob-card { padding: 36px 32px; }
-      .stats-inner { grid-template-columns: 1fr; gap: 40px; }
-      .stat-divider { display: none; }
-      /* Fix 2 — tighten section padding on mobile */
-      .feat          { padding: 64px 24px; }
-      #problems      { padding: 64px 24px 72px; }
-      #stats-strip   { padding: 56px 24px 64px; }
-      #mid-cta       { padding: 72px 24px; }
-      /* Fix 3 — text before screenshot on mobile */
-      .feat-text     { order: -1; }
-    }
-    @media (max-width: 460px) {
-      .email-row { flex-direction: column; height: auto; border-radius: 12px; }
-      .email-row input[type="email"] { border-radius: 12px 12px 0 0; height: 52px; width: 100%; }
-      .email-row button { border-radius: 0 0 12px 12px; height: 52px; width: 100%; }
-    }
-    @media (min-width: 768px) { .phone-col { perspective: 800px; } }
-
-    @keyframes dot-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-    .dot.pulsing { animation: dot-pulse 0.6s ease-in-out forwards; }
-
-    /* ── iOS launch badge ───────────────────────────────────────────────── */
-    .launch-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(250,247,242,0.09);
-      border: 1px solid rgba(250,247,242,0.22);
-      border-radius: 100px; padding: 10px 22px;
-      font-size: 13px; font-weight: 500; color: rgba(250,247,242,0.82);
-      margin-bottom: 32px; letter-spacing: 0.02em; cursor: default;
-    }
-    .launch-pulse {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--orange); flex-shrink: 0;
-      animation: dot-pulse 2.2s ease-in-out infinite;
-    }
-
-    /* ── Hero phone float ───────────────────────────────────────────────── */
-    @keyframes hero-float {
-      0%, 100% { transform: translateY(0px);   }
-      50%       { transform: translateY(-14px); }
-    }
-
-    /* ── Hero ambient glow breathe ─────────────────────────────────────── */
-    @keyframes glow-breathe {
-      0%, 100% { transform: translate(-50%,-50%) scale(1);    opacity: 0.85; }
-      50%       { transform: translate(-50%,-50%) scale(1.18); opacity: 1;    }
-    }
-    .hero-device-glow { animation: glow-breathe 5s ease-in-out infinite; }
-
-    /* ── CTA button light sweep ─────────────────────────────────────────── */
-    @keyframes btn-shimmer {
-      0%   { transform: translateX(-160%) skewX(-15deg); }
-      100% { transform: translateX(420%)  skewX(-15deg); }
-    }
-    .email-row button::after {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 32%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-      animation: btn-shimmer 3s ease-in-out infinite 1.5s; pointer-events: none;
-    }
-
-    /* ── Hero element stagger ───────────────────────────────────────────── */
-    .launch-badge.reveal                              { transition-delay: 0ms;   }
-    .hero-wordmark.reveal                             { transition-delay: 90ms;  }
-    .hero-tagline.reveal                              { transition-delay: 190ms; }
-    .hero-benefits .hero-benefit:nth-child(1).reveal  { transition-delay: 300ms; }
-    .hero-benefits .hero-benefit:nth-child(2).reveal  { transition-delay: 420ms; }
-    .hero-form-wrap.reveal                            { transition-delay: 540ms; }
-
-    /* ── Problem card stagger ───────────────────────────────────────────── */
-    .problems-grid .prob-card:nth-child(1) { transition-delay: 0ms;   }
-    .problems-grid .prob-card:nth-child(2) { transition-delay: 150ms; }
-
-    /* ── Floating hero particles ───────────────────────────────────────── */
-    .hero-dot { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
-    @keyframes dot-drift {
-      0%   { transform: translate(0,0) scale(1);    opacity: var(--lo); }
-      33%  { transform: translate(var(--dx1),var(--dy1)) scale(1.15); opacity: var(--hi); }
-      66%  { transform: translate(var(--dx2),var(--dy2)) scale(0.88); opacity: var(--lo); }
-      100% { transform: translate(0,0) scale(1);    opacity: var(--lo); }
-    }
-
-    /* ── Stat count-up ─────────────────────────────────────────────────── */
-    .stat-val { display: inline; font-variant-numeric: tabular-nums; }
-
-    /* ── prefers-reduced-motion ─────────────────────────────────────────── */
-    /* ── Stats stagger ──────────────────────────────────────────────────── */
-    #stats-strip .stats-inner > div:nth-child(1).reveal { transition-delay: 0ms;   }
-    #stats-strip .stats-inner > div:nth-child(2).reveal { transition-delay: 180ms; }
-    #stats-strip .stats-inner > div:nth-child(3).reveal { transition-delay: 360ms; }
-
-    /* ── Stat number flash ──────────────────────────────────────────────── */
-    @keyframes stat-flash {
-      0%   { color: var(--green-dark); }
-      45%  { color: var(--orange); }
-      100% { color: var(--green-dark); }
-    }
-    .stat-num.flashing { animation: stat-flash 0.65s ease-out forwards; }
-
-    /* ── Mid-CTA stagger ────────────────────────────────────────────────── */
-    #mid-cta .mid-cta-eyebrow.reveal { transition-delay: 0ms;   }
-    #mid-cta .mid-cta-h.reveal       { transition-delay: 100ms; }
-    #mid-cta .mid-cta-sub.reveal     { transition-delay: 200ms; }
-    #mid-cta > div.reveal            { transition-delay: 320ms; }
-
-    /* ── Prob-card icon bounce on hover ─────────────────────────────────── */
-    .prob-icon { transition: transform 0.3s cubic-bezier(0.34, 1.38, 0.64, 1); }
-    .prob-card:hover .prob-icon { transform: scale(1.12); }
-
-    /* ── Pill & solve badge hover ───────────────────────────────────────── */
-    .feat-pill, .prob-solve {
-      transition: transform 0.2s cubic-bezier(0.34, 1.18, 0.64, 1),
-                  border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .feat-pill:hover  { transform: scale(1.04); border-color: rgba(196,98,45,0.55); box-shadow: 0 2px 12px rgba(196,98,45,0.15); }
-    .prob-solve:hover { transform: scale(1.04); border-color: rgba(196,98,45,0.55); box-shadow: 0 2px 12px rgba(196,98,45,0.15); }
-
-    /* ── Feature text inner stagger ─────────────────────────────────────── */
-    .feat-text-reveal .feat-h,
-    .feat-text-reveal .feat-p,
-    .feat-text-reveal .feat-pill {
-      opacity: 0; transform: translateY(14px);
-      transition: opacity 0.55s ease, transform 0.6s cubic-bezier(0.34, 1.18, 0.64, 1);
-    }
-    .feat-text-reveal.visible .feat-h    { opacity: 1; transform: translateY(0); transition-delay: 60ms;  }
-    .feat-text-reveal.visible .feat-p    { opacity: 1; transform: translateY(0); transition-delay: 160ms; }
-    .feat-text-reveal.visible .feat-pill { opacity: 1; transform: translateY(0); transition-delay: 260ms; }
-
-    /* ── Section heading underline slide-in ─────────────────────────────── */
-    .feat-h { position: relative; }
-    .feat-h::after {
-      content: ''; position: absolute; bottom: -6px; left: 0;
-      width: 52px; height: 3px; border-radius: 2px;
-      background: var(--orange);
-      transform: scaleX(0); transform-origin: left center;
-      transition: transform 0.4s cubic-bezier(0.34, 1.18, 0.64, 1) 0.28s;
-    }
-    .feat-text-reveal.visible .feat-h::after { transform: scaleX(1); }
-
-    /* ══════════════════════════════════════════════════════════════════════
-       FAQ
-    ═══════════════════════════════════════════════════════════════════════ */
-    #faq { background: var(--cream); padding: 96px 24px 80px; }
-    .faq-inner { max-width: 720px; margin: 0 auto; }
-    .faq-heading { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: clamp(28px, 4vw, 38px); color: var(--green-dark); margin-bottom: 52px; }
-    .faq-item { border-top: 1px solid rgba(29,77,46,0.12); padding: 28px 0; }
-    .faq-item:last-child { border-bottom: 1px solid rgba(29,77,46,0.12); }
-    .faq-q { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 17px; color: var(--green-dark); margin-bottom: 10px; }
-    .faq-a { font-size: 15px; color: var(--text-muted); line-height: 1.75; }
-    .faq-a a { color: var(--green-dark); text-decoration: underline; }
-    @media (max-width: 740px) { #faq { padding: 64px 24px 56px; } }
-
-    /* ── Success state social follow ────────────────────────────────────── */
-    .form-success-wrap { text-align: center; padding: 12px 0; }
-    .form-success-msg { font-size: 16px; color: var(--cream); margin-bottom: 18px; line-height: 1.5; }
-    #mid-cta .form-success-msg { color: var(--green-dark); }
-    .success-social { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .success-social-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
-      text-decoration: none; transition: opacity 0.15s;
-    }
-    .success-social-btn:hover { opacity: 0.82; }
-    .success-social-btn.instagram { background: rgba(250,247,242,0.15); border: 1px solid rgba(250,247,242,0.28); color: var(--cream); }
-    .success-social-btn.twitter   { background: rgba(250,247,242,0.15); border: 1px solid rgba(250,247,242,0.28); color: var(--cream); }
-    #mid-cta .success-social-btn.instagram { background: rgba(29,77,46,0.10); border-color: rgba(29,77,46,0.22); color: var(--green-dark); }
-    #mid-cta .success-social-btn.twitter   { background: rgba(29,77,46,0.10); border-color: rgba(29,77,46,0.22); color: var(--green-dark); }
-
-    /* ── Waitlist count ─────────────────────────────────────────────────── */
-    .waitlist-count-wrap { display: none; font-size: 12px; color: rgba(250,247,242,0.45); text-align: center; margin-top: 10px; letter-spacing: 0.03em; }
-    #mid-cta .waitlist-count-wrap { color: var(--text-muted); }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-device-col  { animation: none !important; }
-      .hero-device-glow { animation: none !important; }
-      .email-row button::after { animation: none !important; opacity: 0; }
-      .hero-dot { animation: none !important; }
-      .scroll-cue { animation: none !important; }
-      .stat-num.flashing { animation: none !important; }
-      .reveal, .feat-text-reveal, .phone-enter-left, .phone-enter-right, .overline,
-      .feat-text-reveal .feat-h, .feat-text-reveal .feat-p, .feat-text-reveal .feat-pill {
-        transition-duration: 0.01ms !important; transition-delay: 0ms !important;
-      }
-      .feat-h::after { transition: none !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
 
@@ -677,7 +136,9 @@
       Continue with Google
     </button>
     <div class="signin-divider"><span>or</span></div>
+    <label for="modal-email" class="visually-hidden">Email address</label>
     <input type="email" id="modal-email" class="signin-input" placeholder="Email address" autocomplete="email" inputmode="email">
+    <label for="modal-password" class="visually-hidden">Password</label>
     <input type="password" id="modal-password" class="signin-input" placeholder="Password" autocomplete="current-password">
     <button class="signin-submit" id="modal-submit">Sign in</button>
     <div class="signin-error" id="modal-error"></div>
@@ -699,10 +160,10 @@
       <div class="launch-badge reveal" role="status" aria-label="Platform and launch status">
         <span class="launch-pulse" aria-hidden="true"></span>
         <svg width="12" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
-        iPhone &nbsp;·&nbsp; Launching soon
+        iOS &nbsp;·&nbsp; Launching soon
       </div>
-      <h1 class="hero-wordmark reveal">Dinn<span>rd</span></h1>
-      <p class="hero-tagline reveal">Stop staring at the fridge.</p>
+      <div class="hero-wordmark reveal" aria-label="Dinnrd">Dinn<span>rd</span></div>
+      <h1 class="hero-tagline reveal">Stop staring at the fridge.</h1>
 
       <div class="hero-benefits" aria-label="Key benefits">
         <div class="hero-benefit reveal">
@@ -723,30 +184,33 @@
         <div id="hero-wrap" class="email-form-wrap" style="margin:0;">
           <div class="email-row">
             <input type="email" id="hero-email" placeholder="Your email address" autocomplete="email" inputmode="email" aria-label="Email address">
-            <button id="hero-btn" type="button" onclick="submitForm('hero')">Save my spot</button>
+            <button id="hero-btn" type="button">Save my spot</button>
           </div>
           <p class="hero-note" id="hero-note">First 500 get 3 months free &nbsp;·&nbsp; $5/mo as a beta tester &nbsp;·&nbsp; iOS</p>
           <div class="waitlist-count-wrap" id="hero-count-wrap"><span id="hero-count"></span> people on the list</div>
           <div class="form-error" id="hero-error" aria-live="polite"></div>
         </div>
+        <p class="hero-trust">Built by Harbour Labs &nbsp;·&nbsp; No VC &nbsp;·&nbsp; No data resale</p>
       </div>
     </div>
 
     <div class="hero-device-col">
       <div class="hero-device-glow" aria-hidden="true"></div>
       <div class="phone-wrap" data-base-rotate="-4">
-        <div class="iphone" style="transform:rotate(-4deg);" aria-label="Dinnrd meal plan screen">
+        <div class="iphone" style="transform:rotate(-4deg);" aria-label="Dinnrd pantry screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
           <div class="iphone-screen">
-            <img src="screenshots/meal-plan.png" alt="Dinnrd meal plan screen" class="iphone-screenshot">
+            <picture>
+              <source srcset="screenshots/pantry.webp" type="image/webp">
+              <img src="screenshots/pantry.png" alt="Dinnrd pantry screen" class="iphone-screenshot">
+            </picture>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <button class="scroll-cue" aria-label="Scroll to features"
-          onclick="document.getElementById('problems').scrollIntoView({behavior:'smooth'})">
+  <button class="scroll-cue" aria-label="Scroll to features">
     <svg viewBox="0 0 24 24" fill="none" stroke="#FAF7F2" stroke-opacity="0.5"
          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="6 9 12 15 18 9"/>
@@ -815,14 +279,17 @@
         <div class="iphone" style="transform:rotate(-3deg);" aria-label="Dinnrd weekly plan screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
           <div class="iphone-screen">
-            <img src="screenshots/meal-plan.png" alt="Dinnrd weekly meal plan" class="iphone-screenshot" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="screenshots/meal-plan.webp" type="image/webp">
+              <img src="screenshots/meal-plan.png" alt="Dinnrd weekly meal plan" class="iphone-screenshot" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
     </div>
     <div class="feat-text feat-text-reveal">
       <span class="overline">Save time</span>
-      <h2 class="feat-h">One tap. Done.</h2>
+      <h2 class="feat-h">One tap. Seven dinners.</h2>
       <p class="feat-p">Every Sunday, one tap lays out a full week of dinners. Dinnrd figures out what your household eats, what you've already got, and what fits your week. You just cook.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -848,7 +315,10 @@
         <div class="iphone" style="transform:rotate(3deg);" aria-label="Dinnrd pantry screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
           <div class="iphone-screen">
-            <img src="screenshots/pantry.png" alt="Dinnrd pantry screen" class="iphone-screenshot" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="screenshots/pantry.webp" type="image/webp">
+              <img src="screenshots/pantry.png" alt="Dinnrd pantry screen" class="iphone-screenshot" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
@@ -856,7 +326,7 @@
     <div class="feat-text feat-text-reveal">
       <span class="overline">Less waste, more money</span>
       <h2 class="feat-h">Use everything. Waste nothing.</h2>
-      <p class="feat-p">The average household throws away $1,500 worth of food every year. Dinnrd tracks what's in your pantry and plans meals around things that need using first, so food ends up on the plate rather than in the bin.</p>
+      <p class="feat-p">Most households throw away food they bought less than a week ago. Dinnrd tracks everything in your pantry and plans meals around what needs using first, so food ends up on the plate rather than in the bin.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Save up to $1,500 a year on groceries
@@ -871,7 +341,7 @@
 <section id="stats-strip" aria-label="Impact stats">
   <div class="stats-inner">
     <div class="reveal">
-      <div class="stat-num"><span>$</span><span class="stat-val" data-target="1500">1,500</span></div>
+      <div class="stat-num"><span>$</span><span class="stat-val" data-target="1500">1,500</span><sup style="font-size:0.45em;vertical-align:super;">*</sup></div>
       <div class="stat-label">in food the average household throws away every year</div>
     </div>
     <div class="reveal">
@@ -883,6 +353,7 @@
       <div class="stat-label">spent every week just deciding what to cook</div>
     </div>
   </div>
+  <p class="stat-footnote"><sup>*</sup> USDA Economic Research Service, 2023</p>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -901,14 +372,17 @@
         <div class="iphone" style="transform:rotate(-3deg);" aria-label="Dinnrd grocery list screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
           <div class="iphone-screen">
-            <img src="screenshots/grocery-list.png" alt="Dinnrd grocery list" class="iphone-screenshot" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="screenshots/grocery-list.webp" type="image/webp">
+              <img src="screenshots/grocery-list.png" alt="Dinnrd grocery list" class="iphone-screenshot" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
     </div>
     <div class="feat-text feat-text-reveal">
       <span class="overline">Shop smarter</span>
-      <h2 class="feat-h">Your list, built for you.</h2>
+      <h2 class="feat-h">Your grocery list, minus what you already own.</h2>
       <p class="feat-p">Dinnrd builds your grocery list straight from the meal plan. Only what you actually need, nothing you've already got at home. Show up to the shops knowing exactly what to grab.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -943,7 +417,7 @@
 
       <div class="faq-item reveal">
         <h3 class="faq-q">What happens after I join the waitlist?</h3>
-        <p class="faq-a">We'll reach out when early access opens on TestFlight. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Your beta tester price locks in the moment you sign up.</p>
+        <p class="faq-a">We'll email you the moment TestFlight opens. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Your beta tester price locks in the moment you sign up.</p>
       </div>
 
       <div class="faq-item reveal">
@@ -953,7 +427,7 @@
 
       <div class="faq-item reveal">
         <h3 class="faq-q">Can I save my own recipes?</h3>
-        <p class="faq-a">Yes. Dinnrd has a cookbooks section where you can save, organise, and search your own recipes. Anything you add goes straight into the meal planning rotation.</p>
+        <p class="faq-a">Yes. Dinnrd has a cookbooks section where you can save, organize, and search your own recipes. Anything you add goes straight into the meal planning rotation.</p>
       </div>
 
       <div class="faq-item reveal">
@@ -981,7 +455,7 @@
     <div id="mid-wrap" class="email-form-wrap">
       <div class="email-row">
         <input type="email" id="mid-email" placeholder="Your email address" autocomplete="email" inputmode="email" aria-label="Email address">
-        <button id="mid-btn" type="button" onclick="submitForm('mid')">Save my spot</button>
+        <button id="mid-btn" type="button">Lock in beta pricing.</button>
       </div>
       <div class="form-error" id="mid-error" aria-live="polite"></div>
     </div>
@@ -990,7 +464,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Harbour Labs LLC &nbsp;·&nbsp; <a href="https://harbourlabs.co" target="_blank" rel="noopener">Harbour Labs</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a></p>
+  <p>© 2026 Harbour Labs LLC &nbsp;·&nbsp; <a href="https://harbourlabs.co" target="_blank" rel="noopener">Harbour Labs</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a></p>
   <p style="margin-top:8px;">
     <a href="https://instagram.com/getdinnrd" target="_blank" rel="noopener" aria-label="Dinnrd on Instagram">Instagram</a>
     &nbsp;·&nbsp;
@@ -998,218 +472,8 @@
     &nbsp;·&nbsp;
     <a href="mailto:support@dinnrd.com">support@dinnrd.com</a>
   </p>
+  <p style="margin-top:8px;"><button id="footer-signin-btn" class="footer-signin-link">Beta tester? Sign in</button></p>
 </footer>
-
-<script>
-  document.querySelectorAll('#hero .reveal, #hero .launch-badge').forEach(el => el.classList.add('visible'));
-
-  const revealObs = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-  const featObs = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const s = e.target;
-      const phone = s.querySelector('.phone-enter-left, .phone-enter-right');
-      if (phone) phone.classList.add('visible');
-      const text = s.querySelector('.feat-text-reveal');
-      if (text) text.classList.add('visible');
-      const ol = s.querySelector('.overline');
-      if (ol) ol.classList.add('visible');
-      obs.unobserve(s);
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.feat').forEach(s => featObs.observe(s));
-
-  const progressBar = document.getElementById('scroll-progress');
-  function updateProgress() {
-    const docH = document.documentElement.scrollHeight - window.innerHeight;
-    if (docH > 0) progressBar.style.transform = `scaleY(${window.scrollY / docH})`;
-  }
-
-  const phoneCols = Array.from(document.querySelectorAll('.feat .phone-col'));
-  let scrollTicking = false;
-  function runParallax() {
-    if (window.innerWidth < 768) { phoneCols.forEach(c => c.style.transform = ''); return; }
-    const vpCenter = window.innerHeight / 2;
-    phoneCols.forEach(col => {
-      const r = col.getBoundingClientRect();
-      const dist = vpCenter - (r.top + r.height / 2);
-      const offset = dist * 0.15;
-      const isRight = !!col.querySelector('.phone-enter-right');
-      col.style.transform = `translateY(${isRight ? -offset : offset}px)`;
-    });
-  }
-  function onScroll() {
-    if (!scrollTicking) {
-      requestAnimationFrame(() => { runParallax(); updateProgress(); scrollTicking = false; });
-      scrollTicking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  updateProgress();
-
-  if (window.innerWidth >= 768) {
-    document.querySelectorAll('.phone-wrap').forEach(wrap => {
-      const phone = wrap.querySelector('.iphone');
-      if (!wrap || !phone) return;
-      const base = parseFloat(wrap.dataset.baseRotate) || 0;
-      const col = wrap.closest('.phone-col') || wrap.parentElement;
-      let pending = false, tx = 0, ty = 0;
-      col.addEventListener('mousemove', e => {
-        const r = col.getBoundingClientRect();
-        tx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
-        ty = ((e.clientY - r.top)  / r.height - 0.5) * 2;
-        if (!pending) {
-          pending = true;
-          requestAnimationFrame(() => {
-            phone.style.transition = 'transform 0.1s ease';
-            phone.style.transform  = `rotate(${base}deg) perspective(800px) rotateX(${-ty * 5}deg) rotateY(${tx * 5}deg)`;
-            pending = false;
-          });
-        }
-      }, { passive: true });
-      col.addEventListener('mouseleave', () => {
-        phone.style.transition = 'transform 0.45s ease-out';
-        phone.style.transform  = `rotate(${base}deg)`;
-      });
-    });
-  }
-
-  const debounce = {};
-  function submitForm(prefix) {
-    const emailEl = document.getElementById(prefix + '-email');
-    const btnEl   = document.getElementById(prefix + '-btn');
-    const errEl   = document.getElementById(prefix + '-error');
-    const wrapEl  = document.getElementById(prefix + '-wrap');
-    const noteEl  = document.getElementById(prefix + '-note');
-    const email   = emailEl ? emailEl.value.trim() : '';
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (errEl) errEl.textContent = 'Please enter a valid email.'; return;
-    }
-    if (errEl) errEl.textContent = '';
-    if (debounce[prefix]) return;
-    debounce[prefix] = true;
-    setTimeout(() => { debounce[prefix] = false; }, 500);
-    if (btnEl)   { btnEl.disabled = true; btnEl.textContent = 'Joining…'; }
-    if (emailEl) emailEl.disabled = true;
-    fetch('/.netlify/functions/subscribe', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-    })
-      .then(r => r.json())
-      .then(data => {
-        if (data.success) {
-          const wrap = document.createElement('div');
-          wrap.className = 'form-success-wrap';
-          wrap.innerHTML = `
-            <p class="form-success-msg">You're on the list. We'll reach out when early access opens.</p>
-            <div class="success-social">
-              <a href="https://instagram.com/getdinnrd" target="_blank" rel="noopener" class="success-social-btn instagram">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-                Follow @getdinnrd
-              </a>
-              <a href="https://twitter.com/getdinnrd" target="_blank" rel="noopener" class="success-social-btn twitter">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                Follow @getdinnrd
-              </a>
-            </div>`;
-          if (wrapEl) wrapEl.replaceWith(wrap);
-          if (noteEl) noteEl.style.display = 'none';
-        } else {
-          if (errEl) errEl.textContent = 'Something went wrong. Please try again.';
-          if (btnEl)   { btnEl.disabled = false; btnEl.textContent = 'Save my spot'; }
-          if (emailEl) emailEl.disabled = false;
-        }
-      })
-      .catch(() => {
-        if (errEl) errEl.textContent = 'Something went wrong. Please try again.';
-        if (btnEl)   { btnEl.disabled = false; btnEl.textContent = 'Save my spot'; }
-        if (emailEl) emailEl.disabled = false;
-      });
-  }
-
-  ['hero', 'mid'].forEach(prefix => {
-    const el = document.getElementById(prefix + '-email');
-    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') submitForm(prefix); });
-  });
-
-  const nav = document.getElementById('site-nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  // ── Stat count-up animation ────────────────────────────────────────────
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function flashStatNum(statNum) {
-    if (prefersReducedMotion || !statNum) return;
-    statNum.classList.remove('flashing');
-    void statNum.offsetWidth; // reflow to restart animation
-    statNum.classList.add('flashing');
-    statNum.addEventListener('animationend', () => statNum.classList.remove('flashing'), { once: true });
-  }
-
-  function countUp(el) {
-    if (prefersReducedMotion) return;
-    const target = parseInt(el.dataset.target, 10);
-    const dur = 1800;
-    const t0 = performance.now();
-    function step(now) {
-      const p = Math.min((now - t0) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(eased * target).toLocaleString();
-      if (p < 1) {
-        requestAnimationFrame(step);
-      } else {
-        flashStatNum(el.closest('.stat-num'));
-      }
-    }
-    requestAnimationFrame(step);
-  }
-
-  const counterObs = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const statItems = Array.from(e.target.querySelectorAll('.stats-inner > div'));
-      statItems.forEach((item, i) => {
-        const sv = item.querySelector('.stat-val[data-target]');
-        const sn = item.querySelector('.stat-num');
-        if (sv) {
-          setTimeout(() => countUp(sv), i * 180);
-        } else if (sn) {
-          // "1 in 5" has no counter — flash it after the count-up duration
-          setTimeout(() => flashStatNum(sn), i * 180 + 1820);
-        }
-      });
-      obs.unobserve(e.target);
-    });
-  }, { threshold: 0.45 });
-  const statsEl = document.getElementById('stats-strip');
-  if (statsEl) counterObs.observe(statsEl);
-
-  // ── Prob-card hover lift ───────────────────────────────────────────────
-  document.querySelectorAll('.prob-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transition = 'transform 0.28s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.28s ease';
-    });
-  });
-
-  // ── Live waitlist count ────────────────────────────────────────────────
-  fetch('/.netlify/functions/waitlist-count')
-    .then(r => r.json())
-    .then(({ count }) => {
-      if (!count || count < 10) return;
-      ['hero', 'mid'].forEach(prefix => {
-        const wrap = document.getElementById(prefix + '-count-wrap');
-        const span = document.getElementById(prefix + '-count');
-        if (wrap && span) { span.textContent = count.toLocaleString(); wrap.style.display = 'block'; }
-      });
-    })
-    .catch(() => {});
-</script>
 
 <script src="/js/config.js"></script>
 <noscript>
@@ -1218,91 +482,10 @@
     .hero-form-wrap, #mid-wrap { display: none; }
   </style>
 </noscript>
+<script src="/js/home.js"></script>
 <script>
-(function () {
-  const navRight = document.getElementById('nav-right');
-  const modal    = document.getElementById('signin-modal');
-
-  // Show nav immediately — no Supabase needed for initial render
-  navRight.innerHTML = `<button class="nav-btn-signin" id="nav-signin-btn">Beta sign in</button>`;
-
-  let _supabase = null;
-  let _siteUrl  = null;
-
-  async function loadSupabase() {
-    if (_supabase) return;
-    const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-    const { supabaseUrl, supabaseAnonKey, siteUrl } = window.DINNRD_CONFIG;
-    _supabase = createClient(supabaseUrl, supabaseAnonKey);
-    _siteUrl  = siteUrl;
-  }
-
-  function showLoggedIn(user) {
-    const name = user.user_metadata?.full_name || user.email.split('@')[0];
-    navRight.innerHTML = `<span class="nav-user">Hi, ${name}</span><a href="/account" class="nav-account-link">Account</a>`;
-  }
-
-  function oauthRedirect() {
-    return _siteUrl + '/auth/callback?redirect=' + encodeURIComponent(location.pathname);
-  }
-
-  function openModal() {
-    modal.removeAttribute('inert');
-    modal.classList.add('open');
-    document.getElementById('modal-email').focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove('open');
-    setTimeout(() => modal.setAttribute('inert', ''), 200);
-  }
-
-  async function handleSignInClick() {
-    await loadSupabase();
-    try {
-      const { data: { session } } = await _supabase.auth.getSession();
-      if (session) { showLoggedIn(session.user); return; }
-    } catch (_) {}
-    openModal();
-  }
-
-  document.getElementById('nav-signin-btn').addEventListener('click', handleSignInClick);
-
-  document.getElementById('modal-close').addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  document.getElementById('modal-apple').addEventListener('click', async () => {
-    await loadSupabase();
-    _supabase.auth.signInWithOAuth({ provider: 'apple', options: { redirectTo: oauthRedirect() } });
-  });
-  document.getElementById('modal-google').addEventListener('click', async () => {
-    await loadSupabase();
-    _supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: oauthRedirect() } });
-  });
-
-  const modalErr = document.getElementById('modal-error');
-  document.getElementById('modal-submit').addEventListener('click', async () => {
-    await loadSupabase();
-    const email    = document.getElementById('modal-email').value.trim();
-    const password = document.getElementById('modal-password').value;
-    const btn      = document.getElementById('modal-submit');
-    modalErr.textContent = '';
-    if (!email || !password) { modalErr.textContent = 'Please enter your email and password.'; return; }
-    btn.disabled = true; btn.textContent = 'Signing in…';
-    const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      modalErr.textContent = error.message.includes('Invalid login credentials') ? 'Incorrect email or password.' : error.message;
-      btn.disabled = false; btn.textContent = 'Sign in'; return;
-    }
-    closeModal();
-    showLoggedIn(data.user);
-  });
-
-  document.getElementById('modal-password').addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('modal-submit').click();
-  });
-})();
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_t9xcrDdCyeuhzjQSGnvax73RTEDGKBuGuhk9j7iGmFoF', { api_host: 'https://us.i.posthog.com', person_profiles: 'always' });
 </script>
 
 </body>
