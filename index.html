@@ -144,7 +144,7 @@
     <div class="signin-error" id="modal-error"></div>
     <p class="signin-footer">
       <a href="/forgot-password">Forgot password?</a> &nbsp;·&nbsp;
-      No account? <a href="/signup">Sign up free</a>
+      No account? <a href="/signup">Sign up</a>
     </p>
   </div>
 </div>
@@ -178,6 +178,12 @@
           </div>
           Nothing in the fridge goes to waste.
         </div>
+        <div class="hero-benefit reveal">
+          <div class="hero-benefit-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          35 hours a year you won't spend staring at the fridge.
+        </div>
       </div>
 
       <div class="hero-form-wrap reveal">
@@ -186,23 +192,22 @@
             <input type="email" id="hero-email" placeholder="Your email address" autocomplete="email" inputmode="email" aria-label="Email address">
             <button id="hero-btn" type="button">Save my spot</button>
           </div>
-          <p class="hero-note" id="hero-note">First 500 get 3 months free &nbsp;·&nbsp; $5/mo as a beta tester &nbsp;·&nbsp; iOS</p>
+          <p class="hero-note" id="hero-note">First 500 get 3 months free &nbsp;·&nbsp; $5/mo as a beta tester</p>
           <div class="waitlist-count-wrap" id="hero-count-wrap"><span id="hero-count"></span> people on the list</div>
           <div class="form-error" id="hero-error" aria-live="polite"></div>
         </div>
-        <p class="hero-trust">Built by Harbour Labs &nbsp;·&nbsp; No VC &nbsp;·&nbsp; No data resale</p>
       </div>
     </div>
 
     <div class="hero-device-col">
       <div class="hero-device-glow" aria-hidden="true"></div>
       <div class="phone-wrap" data-base-rotate="-4">
-        <div class="iphone" style="transform:rotate(-4deg);" aria-label="Dinnrd pantry screen">
+        <div class="iphone" style="transform:rotate(-4deg);" aria-label="Dinnrd grocery list screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
           <div class="iphone-screen">
             <picture>
-              <source srcset="screenshots/pantry.webp" type="image/webp">
-              <img src="screenshots/pantry.png" alt="Dinnrd pantry screen" class="iphone-screenshot">
+              <source srcset="screenshots/grocery-list.webp" type="image/webp">
+              <img src="screenshots/grocery-list.png" alt="Dinnrd grocery list screen" class="iphone-screenshot">
             </picture>
           </div>
         </div>
@@ -216,11 +221,6 @@
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   </button>
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C80,58 160,4 240,30 C320,56 400,4 480,30 C560,56 640,4 720,30 C800,56 880,4 960,30 C1040,56 1120,4 1200,30 L1200,60 L0,60 Z" fill="#FAF7F2" stroke="#FAF7F2" stroke-width="1.5"/>
-    </svg>
-  </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -254,7 +254,7 @@
         </svg>
       </div>
       <p class="prob-quote">"That's been in there way too long..."</p>
-      <p class="prob-stat">Around a third of all food bought ends up in the bin. For the average household, that's $1,500 a year in groceries nobody ever got to eat.</p>
+      <p class="prob-stat">Around a third of all food bought ends up in the bin. Most of it goes bad within the first week of shopping.</p>
       <div class="prob-solve" aria-label="How Dinnrd helps">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         Dinnrd plans meals around what needs eating first
@@ -264,14 +264,33 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
+     How it works
+═══════════════════════════════════════════════════════════════════════ -->
+<section id="how-it-works" aria-label="How it works">
+  <h2 class="how-heading reveal">How it works</h2>
+  <div class="how-steps">
+    <div class="how-step reveal">
+      <div class="how-num" aria-hidden="true">1</div>
+      <h3 class="how-h">Tell Dinnrd what's in your kitchen.</h3>
+      <p class="how-p">Say it or type it. Dinnrd builds your pantry from a voice note or a quick list — however's fastest.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num" aria-hidden="true">2</div>
+      <h3 class="how-h">Tap plan.</h3>
+      <p class="how-p">One tap on Sunday and you have seven dinners, built around what needs using first and what your household actually eats.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num" aria-hidden="true">3</div>
+      <h3 class="how-h">Shop the difference.</h3>
+      <p class="how-p">Dinnrd generates your grocery list — only what the plan needs that you don't already have. In and out of the shop in one pass.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
      SECTION 3 — Meal planning
 ═══════════════════════════════════════════════════════════════════════ -->
 <section class="feat dark has-grain" aria-label="Meal planning">
-  <div class="wave-divider wave-top" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C80,58 160,4 240,30 C320,56 400,4 480,30 C560,56 640,4 720,30 C800,56 880,4 960,30 C1040,56 1120,4 1200,30 L1200,0 L0,0 Z" fill="#FAF7F2" stroke="#FAF7F2" stroke-width="1.5"/>
-    </svg>
-  </div>
   <div class="feat-inner flip">
     <div class="phone-col">
       <div class="iphone-glow glow-dark" aria-hidden="true"></div>
@@ -296,11 +315,6 @@
         No more nightly dinner debate
       </div>
     </div>
-  </div>
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C80,58 160,4 240,30 C320,56 400,4 480,30 C560,56 640,4 720,30 C800,56 880,4 960,30 C1040,56 1120,4 1200,30 L1200,60 L0,60 Z" fill="#FAF7F2" stroke="#FAF7F2" stroke-width="1.5"/>
-    </svg>
   </div>
 </section>
 
@@ -329,7 +343,7 @@
       <p class="feat-p">Most households throw away food they bought less than a week ago. Dinnrd tracks everything in your pantry and plans meals around what needs using first, so food ends up on the plate rather than in the bin.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        Save up to $1,500 a year on groceries
+        Save what you'd otherwise bin.
       </div>
     </div>
   </div>
@@ -360,11 +374,6 @@
      SECTION 5 — Grocery list feature
 ═══════════════════════════════════════════════════════════════════════ -->
 <section class="feat dark has-grain" aria-label="Grocery list">
-  <div class="wave-divider wave-top" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C80,58 160,4 240,30 C320,56 400,4 480,30 C560,56 640,4 720,30 C800,56 880,4 960,30 C1040,56 1120,4 1200,30 L1200,0 L0,0 Z" fill="#FAF7F2" stroke="#FAF7F2" stroke-width="1.5"/>
-    </svg>
-  </div>
   <div class="feat-inner flip">
     <div class="phone-col">
       <div class="iphone-glow glow-dark" aria-hidden="true"></div>
@@ -389,11 +398,6 @@
         No more double-buying what you already own
       </div>
     </div>
-  </div>
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C80,58 160,4 240,30 C320,56 400,4 480,30 C560,56 640,4 720,30 C800,56 880,4 960,30 C1040,56 1120,4 1200,30 L1200,60 L0,60 Z" fill="#FAF7F2" stroke="#FAF7F2" stroke-width="1.5"/>
-    </svg>
   </div>
 </section>
 
@@ -449,13 +453,13 @@
 ═══════════════════════════════════════════════════════════════════════ -->
 <section id="mid-cta" aria-label="Join waitlist">
   <span class="mid-cta-eyebrow reveal">Early access</span>
-  <h2 class="mid-cta-h reveal">You spend 35 hours a year deciding what's for dinner. Get them back.</h2>
+  <h2 class="mid-cta-h reveal">40 minutes a week. 35 hours a year. Get them back.</h2>
   <p class="mid-cta-sub reveal">Launching on iOS soon. The first 500 on the waitlist get 3 months free, then $5/mo or $48/yr as a beta tester.</p>
   <div class="reveal">
     <div id="mid-wrap" class="email-form-wrap">
       <div class="email-row">
         <input type="email" id="mid-email" placeholder="Your email address" autocomplete="email" inputmode="email" aria-label="Email address">
-        <button id="mid-btn" type="button">Lock in beta pricing.</button>
+        <button id="mid-btn" type="button">Lock in beta pricing</button>
       </div>
       <div class="form-error" id="mid-error" aria-live="polite"></div>
     </div>
@@ -472,7 +476,7 @@
     &nbsp;·&nbsp;
     <a href="mailto:support@dinnrd.com">support@dinnrd.com</a>
   </p>
-  <p style="margin-top:8px;"><button id="footer-signin-btn" class="footer-signin-link">Beta tester? Sign in</button></p>
+  <div style="margin-top:8px;"><button id="footer-signin-btn" class="footer-signin-link">Beta tester? Sign in</button></div>
 </footer>
 
 <script src="/js/config.js"></script>

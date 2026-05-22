@@ -92,12 +92,13 @@ if (scrollCue) {
 // ── Waitlist form submission ────────────────────────────────────────────
 const debounce = {};
 function submitForm(prefix) {
-  const emailEl = document.getElementById(prefix + '-email');
-  const btnEl   = document.getElementById(prefix + '-btn');
-  const errEl   = document.getElementById(prefix + '-error');
-  const wrapEl  = document.getElementById(prefix + '-wrap');
-  const noteEl  = document.getElementById(prefix + '-note');
-  const email   = emailEl ? emailEl.value.trim() : '';
+  const emailEl  = document.getElementById(prefix + '-email');
+  const btnEl    = document.getElementById(prefix + '-btn');
+  const errEl    = document.getElementById(prefix + '-error');
+  const wrapEl   = document.getElementById(prefix + '-wrap');
+  const noteEl   = document.getElementById(prefix + '-note');
+  const origLabel = btnEl ? btnEl.textContent : '';
+  const email    = emailEl ? emailEl.value.trim() : '';
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     if (errEl) errEl.textContent = 'Please enter a valid email.'; return;
   }
@@ -131,16 +132,14 @@ function submitForm(prefix) {
         if (wrapEl) wrapEl.replaceWith(wrap);
         if (noteEl) noteEl.style.display = 'none';
       } else {
-        const label = prefix === 'mid' ? 'Lock in beta pricing.' : 'Save my spot';
         if (errEl) errEl.textContent = 'Something went wrong. Please try again.';
-        if (btnEl)   { btnEl.disabled = false; btnEl.textContent = label; }
+        if (btnEl)   { btnEl.disabled = false; btnEl.textContent = origLabel; }
         if (emailEl) emailEl.disabled = false;
       }
     })
     .catch(() => {
-      const label = prefix === 'mid' ? 'Lock in beta pricing.' : 'Save my spot';
       if (errEl) errEl.textContent = 'Something went wrong. Please try again.';
-      if (btnEl)   { btnEl.disabled = false; btnEl.textContent = label; }
+      if (btnEl)   { btnEl.disabled = false; btnEl.textContent = origLabel; }
       if (emailEl) emailEl.disabled = false;
     });
 }
@@ -153,7 +152,7 @@ document.getElementById('mid-btn').addEventListener('click', () => submitForm('m
   if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') submitForm(prefix); });
 });
 
-// ── Stat count-up animation ────────────────────────────────────────────
+// ── Stat flash animation ───────────────────────────────────────────────
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function flashStatNum(statNum) {
@@ -164,37 +163,11 @@ function flashStatNum(statNum) {
   statNum.addEventListener('animationend', () => statNum.classList.remove('flashing'), { once: true });
 }
 
-function countUp(el) {
-  if (prefersReducedMotion) return;
-  const target = parseInt(el.dataset.target, 10);
-  const dur = 1800;
-  const t0 = performance.now();
-  function step(now) {
-    const p = Math.min((now - t0) / dur, 1);
-    const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(eased * target).toLocaleString();
-    if (p < 1) {
-      requestAnimationFrame(step);
-    } else {
-      flashStatNum(el.closest('.stat-num'));
-    }
-  }
-  requestAnimationFrame(step);
-}
-
 const counterObs = new IntersectionObserver((entries, obs) => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
-    const statItems = Array.from(e.target.querySelectorAll('.stats-inner > div'));
-    statItems.forEach((item, i) => {
-      const sv = item.querySelector('.stat-val[data-target]');
-      const sn = item.querySelector('.stat-num');
-      if (sv) {
-        setTimeout(() => countUp(sv), i * 180);
-      } else if (sn) {
-        setTimeout(() => flashStatNum(sn), i * 180 + 1820);
-      }
-    });
+    const statNums = Array.from(e.target.querySelectorAll('.stat-num'));
+    statNums.forEach((sn, i) => setTimeout(() => flashStatNum(sn), i * 200));
     obs.unobserve(e.target);
   });
 }, { threshold: 0.45 });
