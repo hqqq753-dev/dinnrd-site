@@ -24,6 +24,10 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://us.i.posthog.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://mkpapzrsobhcahpihlbg.supabase.co">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -168,19 +172,19 @@
       <div class="hero-benefits" aria-label="Key benefits">
         <div class="hero-benefit reveal">
           <div class="hero-benefit-icon" aria-hidden="true">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           A full week of dinners planned on Sunday.
         </div>
         <div class="hero-benefit reveal">
           <div class="hero-benefit-icon" aria-hidden="true">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           Nothing in the fridge goes to waste.
         </div>
         <div class="hero-benefit reveal">
           <div class="hero-benefit-icon" aria-hidden="true">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           35 hours a year you won't spend staring at the fridge.
         </div>
@@ -288,12 +292,43 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     SECTION 3 — Meal planning
+     SECTION 3 — Pantry intelligence
 ═══════════════════════════════════════════════════════════════════════ -->
-<section class="feat cream" aria-label="Meal planning">
-  <div class="feat-inner flip">
+<section class="feat cream" aria-label="Pantry intelligence">
+  <div class="feat-inner">
     <div class="phone-col">
       <div class="iphone-glow glow-cream" aria-hidden="true"></div>
+      <div class="phone-wrap phone-enter-left" data-base-rotate="3">
+        <div class="iphone" style="transform:rotate(3deg);" aria-label="Dinnrd pantry screen">
+          <div class="iphone-vol-down" aria-hidden="true"></div>
+          <div class="iphone-screen">
+            <picture>
+              <source srcset="screenshots/pantry.webp" type="image/webp">
+              <img src="screenshots/pantry.png" alt="Dinnrd pantry screen" class="iphone-screenshot" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-text feat-text-reveal">
+      <span class="overline">Less waste, more money</span>
+      <h2 class="feat-h">Use everything. Waste nothing.</h2>
+      <p class="feat-p">Most households throw away food they bought less than a week ago. Dinnrd tracks everything in your pantry and plans meals around what needs using first, so food ends up on the plate rather than in the bin.</p>
+      <div class="feat-pill" aria-label="Key benefit">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Save what you'd otherwise bin
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECTION 4 — Meal planning
+═══════════════════════════════════════════════════════════════════════ -->
+<section class="feat dark has-grain" aria-label="Meal planning">
+  <div class="feat-inner flip">
+    <div class="phone-col">
+      <div class="iphone-glow glow-dark" aria-hidden="true"></div>
       <div class="phone-wrap phone-enter-right" data-base-rotate="-3">
         <div class="iphone" style="transform:rotate(-3deg);" aria-label="Dinnrd weekly plan screen">
           <div class="iphone-vol-down" aria-hidden="true"></div>
@@ -313,37 +348,6 @@
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         No more nightly dinner debate
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════════════
-     SECTION 4 — Pantry intelligence
-═══════════════════════════════════════════════════════════════════════ -->
-<section class="feat dark has-grain" aria-label="Pantry intelligence">
-  <div class="feat-inner">
-    <div class="phone-col">
-      <div class="iphone-glow glow-dark" aria-hidden="true"></div>
-      <div class="phone-wrap phone-enter-left" data-base-rotate="3">
-        <div class="iphone" style="transform:rotate(3deg);" aria-label="Dinnrd pantry screen">
-          <div class="iphone-vol-down" aria-hidden="true"></div>
-          <div class="iphone-screen">
-            <picture>
-              <source srcset="screenshots/pantry.webp" type="image/webp">
-              <img src="screenshots/pantry.png" alt="Dinnrd pantry screen" class="iphone-screenshot" loading="lazy" decoding="async">
-            </picture>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="feat-text feat-text-reveal">
-      <span class="overline">Less waste, more money</span>
-      <h2 class="feat-h">Use everything. Waste nothing.</h2>
-      <p class="feat-p">Most households throw away food they bought less than a week ago. Dinnrd tracks everything in your pantry and plans meals around what needs using first, so food ends up on the plate rather than in the bin.</p>
-      <div class="feat-pill" aria-label="Key benefit">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        Save what you'd otherwise bin.
       </div>
     </div>
   </div>

@@ -1,0 +1,13 @@
+{
+  "name": "Dinnrd",
+  "short_name": "Dinnrd",
+  "description": "Plans your week of dinners, tracks your pantry, builds your grocery list.",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#1D4D2E",
+  "background_color": "#FAF7F2",
+  "display": "standalone",
+  "start_url": "/"
+}
