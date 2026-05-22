@@ -3,7 +3,6 @@
 :root {
   --cream:         #FAF7F2;
   --green-dark:    #1D4D2E;
-  --green-deep:    #0A2614;
   --green-soft:    #2D6A3F;
   --green-muted:   #a8c4b0;
   --orange:        #C4622D;
@@ -303,31 +302,29 @@ body {
    Mid-page CTA
 ═══════════════════════════════════════════════════════════════════════ */
 #mid-cta {
-  background: var(--orange); padding: 112px 24px; text-align: center;
+  background: var(--cream); padding: 112px 24px; text-align: center;
   position: relative; overflow: hidden;
 }
 #mid-cta::before {
   content: ''; position: absolute; top: 50%; left: 50%;
   width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(250,247,242,0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(45,106,63,0.05) 0%, transparent 70%);
   transform: translate(-50%, -50%); pointer-events: none;
 }
 #mid-cta > * { position: relative; z-index: 1; }
-.mid-cta-eyebrow { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green-deep); font-weight: 600; margin-bottom: 16px; }
-.mid-cta-h { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--green-deep); margin-bottom: 14px; line-height: 1.2; }
+.mid-cta-eyebrow { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--orange); font-weight: 600; margin-bottom: 16px; }
+.mid-cta-h { font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); color: var(--green-dark); margin-bottom: 14px; line-height: 1.2; }
 .mid-cta-setup,
 .mid-cta-punch { display: block; }
-.mid-cta-setup { font-size: 0.78em; color: var(--green-deep); opacity: 0.72; margin-bottom: 6px; font-weight: 600; }
-.mid-cta-punch { color: var(--green-deep); }
-.mid-cta-sub { font-size: 16px; color: var(--green-deep); line-height: 1.65; max-width: 440px; margin: 0 auto 40px; }
-#mid-cta .form-success { color: var(--green-deep); }
-#mid-cta .email-row input[type="email"] { background: var(--cream); color: var(--text-dark); }
-#mid-cta .email-row button { background: var(--cream); color: var(--green-deep); border: none; border-left: 1px solid rgba(29,77,46,0.18); }
-#mid-cta .email-row button:hover { background: #EFE9DD; }
-#mid-cta .form-success-msg { color: var(--green-deep); }
-#mid-cta .success-social-btn.instagram { background: rgba(29,77,46,0.10); border-color: rgba(29,77,46,0.22); color: var(--green-deep); }
-#mid-cta .success-social-btn.twitter   { background: rgba(29,77,46,0.10); border-color: rgba(29,77,46,0.22); color: var(--green-deep); }
-#mid-cta .waitlist-count-wrap { color: var(--green-deep); }
+.mid-cta-setup { font-size: 0.78em; color: var(--green-dark); opacity: 0.72; margin-bottom: 6px; font-weight: 600; }
+.mid-cta-punch { color: var(--green-dark); }
+.mid-cta-sub { font-size: 16px; color: var(--green-dark); line-height: 1.65; max-width: 440px; margin: 0 auto 40px; }
+#mid-cta .form-success { color: var(--green-dark); }
+#mid-cta .email-row input[type="email"] { background: #fff; }
+#mid-cta .form-success-msg { color: var(--green-dark); }
+#mid-cta .success-social-btn.instagram { background: rgba(29,77,46,0.10); border-color: rgba(29,77,46,0.22); color: var(--green-dark); }
+#mid-cta .success-social-btn.twitter   { background: rgba(29,77,46,0.10); border-color: rgba(29,77,46,0.22); color: var(--green-dark); }
+#mid-cta .waitlist-count-wrap { color: var(--green-dark); }
 
 /* ══════════════════════════════════════════════════════════════════════
    Footer
