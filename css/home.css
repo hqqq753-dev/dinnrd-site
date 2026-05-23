@@ -11,7 +11,7 @@
   --text-muted:    #6B6B6B;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   background: var(--cream);
@@ -166,13 +166,17 @@ body {
   font-size: clamp(28px, 4.5vw, 40px); color: var(--cream);
   line-height: 1.2; margin-bottom: 28px; letter-spacing: -0.5px;
 }
-.hero-benefits { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.hero-benefits { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
 .hero-benefit {
   display: flex; align-items: center; gap: 14px;
-  font-size: 15.5px; color: rgba(250,247,242,0.75); line-height: 1.55;
+  font-size: 15.5px; color: rgba(250,247,242,0.78); line-height: 1.55;
 }
-.hero-benefit-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.hero-benefit-icon svg { stroke: var(--orange); width: 18px; height: 18px; }
+.hero-benefit-icon {
+  width: 32px; height: 32px; border-radius: 9px;
+  background: rgba(196,98,45,0.18); border: 1.5px solid rgba(196,98,45,0.45);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.hero-benefit-icon svg { stroke: var(--orange); width: 14px; height: 14px; }
 .hero-form-wrap { max-width: 440px; }
 .hero-note { font-size: 12px; color: rgba(250,247,242,0.60); margin-top: 12px; letter-spacing: 0.03em; }
 .spot-counter { margin-top: 14px; width: 100%; max-width: 360px; }
@@ -209,7 +213,7 @@ body {
 /* ══════════════════════════════════════════════════════════════════════
    SECTION 2 — Problem cards
 ═══════════════════════════════════════════════════════════════════════ */
-#problems { background: var(--cream); padding: 56px 24px 48px; position: relative; overflow: hidden; }
+#problems { background: var(--cream); padding: 80px 24px 56px; position: relative; overflow: hidden; border-top: 1px solid rgba(196,98,45,0.18); }
 .problems-header { text-align: center; margin-bottom: 68px; }
 .problems-eyebrow {
   display: block; font-size: 12px; text-transform: uppercase;
@@ -296,17 +300,17 @@ body {
 /* ══════════════════════════════════════════════════════════════════════
    Stats strip
 ═══════════════════════════════════════════════════════════════════════ */
-#stats-strip { background: var(--green-dark); padding: 56px 24px 56px; position: relative; overflow: hidden; }
+#stats-strip { background: var(--cream); padding: 56px 24px 56px; position: relative; overflow: hidden; }
 .stats-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; align-items: center; }
-.stat-divider { width: 1px; background: rgba(250,247,242,0.12); align-self: stretch; }
+.stat-divider { width: 1px; background: rgba(29,77,46,0.1); align-self: stretch; }
 .stat-num {
   font-family: Georgia, "Times New Roman", serif; font-weight: 700;
-  font-size: clamp(40px, 5.5vw, 56px); color: var(--cream); line-height: 1; margin-bottom: 12px;
+  font-size: clamp(40px, 5.5vw, 56px); color: var(--green-dark); line-height: 1; margin-bottom: 12px;
 }
 .stat-num span { color: var(--orange); }
-.stat-top { font-size: 13px; color: rgba(250,247,242,0.58); margin-bottom: 8px; letter-spacing: 0.02em; }
-.stat-label { font-size: 14px; color: rgba(250,247,242,0.72); line-height: 1.55; max-width: 180px; margin: 0 auto; }
-.stat-footnote { font-size: 11px; color: rgba(250,247,242,0.38); text-align: center; margin-top: 20px; max-width: 880px; margin-left: auto; margin-right: auto; }
+.stat-top { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.02em; }
+.stat-label { font-size: 14px; color: var(--text-muted); line-height: 1.55; max-width: 180px; margin: 0 auto; }
+.stat-footnote { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 36px; opacity: 0.65; max-width: 880px; margin-left: auto; margin-right: auto; }
 .stat-footnote cite { font-style: italic; }
 .stat-ref { font-size: 11px; vertical-align: super; color: var(--orange); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
 
@@ -314,7 +318,7 @@ body {
    Mid-page CTA
 ═══════════════════════════════════════════════════════════════════════ */
 #mid-cta {
-  background: var(--cream); padding: 112px 24px; text-align: center;
+  background: var(--cream); padding: 88px 24px; text-align: center;
   position: relative; overflow: hidden;
 }
 #mid-cta::before {
@@ -341,7 +345,7 @@ body {
 /* ══════════════════════════════════════════════════════════════════════
    Footer
 ═══════════════════════════════════════════════════════════════════════ */
-footer { background: #163d22; padding: 28px 24px; text-align: center; }
+footer { background: #163d22; padding: 48px 24px; text-align: center; }
 footer p { font-size: 13px; color: rgba(250,247,242,0.7); }
 footer a { color: rgba(250,247,242,0.7); text-decoration: none; }
 footer a:hover { text-decoration: underline; color: rgba(250,247,242,0.9); }
@@ -432,7 +436,7 @@ footer a:hover { text-decoration: underline; color: rgba(250,247,242,0.9); }
   .stat-divider { display: none; }
   .feat          { padding: 64px 24px; }
   #problems      { padding: 36px 24px 32px; }
-  #stats-strip   { padding: 40px 24px 40px; }
+  #stats-strip   { padding: 40px 24px 48px; }
   #mid-cta       { padding: 72px 24px; }
   .feat-text     { order: -1; }
 }
