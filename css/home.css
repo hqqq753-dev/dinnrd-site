@@ -308,9 +308,9 @@ body {
   font-size: clamp(40px, 5.5vw, 56px); color: var(--green-dark); line-height: 1; margin-bottom: 12px;
 }
 .stat-num span { color: var(--orange); }
-.stat-top { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.02em; }
-.stat-label { font-size: 14px; color: var(--text-muted); line-height: 1.55; max-width: 180px; margin: 0 auto; }
-.stat-footnote { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 36px; opacity: 0.65; max-width: 880px; margin-left: auto; margin-right: auto; }
+.stat-top { font-size: 13px; color: rgba(29,77,46,0.62); margin-bottom: 8px; letter-spacing: 0.02em; }
+.stat-label { font-size: 14px; color: rgba(29,77,46,0.78); line-height: 1.55; max-width: 180px; margin: 0 auto; }
+.stat-footnote { font-size: 11px; color: rgba(29,77,46,0.45); text-align: center; margin-top: 36px; max-width: 880px; margin-left: auto; margin-right: auto; }
 .stat-footnote cite { font-style: italic; }
 .stat-ref { font-size: 11px; vertical-align: super; color: var(--orange); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
 
