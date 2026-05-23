@@ -205,6 +205,7 @@ fetch('/.netlify/functions/waitlist-count')
   .then(({ count }) => {
     const cap = 500;
     const safeCount = Math.max(0, count || 0);
+    if (safeCount < 2) return;
     const pct = Math.min(100, (safeCount / cap) * 100);
     const heroCounter = document.getElementById('hero-spot-counter');
     const heroCount   = document.getElementById('hero-spot-count');
@@ -218,7 +219,7 @@ fetch('/.netlify/functions/waitlist-count')
     const midCount = document.getElementById('mid-count');
     if (midWrap && midCount) {
       midCount.textContent = safeCount.toLocaleString();
-      if (safeCount > 0) midWrap.style.display = 'block';
+      midWrap.style.display = 'block';
     }
   })
   .catch(() => {});
