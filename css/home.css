@@ -300,7 +300,7 @@ body {
 /* ══════════════════════════════════════════════════════════════════════
    Stats strip
 ═══════════════════════════════════════════════════════════════════════ */
-#stats-strip { background: var(--cream); padding: 56px 24px 56px; position: relative; overflow: hidden; }
+#stats-strip { background: var(--cream); padding: 56px 24px 28px; position: relative; overflow: hidden; }
 .stats-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; align-items: center; }
 .stat-divider { width: 1px; background: rgba(29,77,46,0.1); align-self: stretch; }
 .stat-num {
