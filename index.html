@@ -70,7 +70,7 @@
             "name": "What happens after I join the waitlist?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We will email you the moment TestFlight opens. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Each paying user you refer earns you 1 additional free month, up to 12 months total."
+              "text": "We'll email you the moment TestFlight opens. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Each paying user you refer earns you 1 additional free month, up to 12 months total."
             }
           },
           {
@@ -78,7 +78,7 @@
             "name": "How do I add things to my pantry?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Mostly by talking to it. Say something like 'we have three tins of tomatoes, a block of cheddar and 500g of chicken breast that looks like it needs to be used soon' and Dinnrd figures out the rest. You can type manually if you prefer."
+              "text": "Mostly by talking to it. Say something like 'three cans of tomatoes, some mozzarella, and half a kilo of chicken that's going off in two days' and Dinnrd figures out the rest. You can type manually if you prefer."
             }
           },
           {
@@ -94,7 +94,7 @@
             "name": "What platform is Dinnrd on?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "iOS only with Android on the roadmap."
+              "text": "iOS first. Android is coming — join the waitlist either way and we'll tell you when it's your turn."
             }
           },
           {
@@ -167,7 +167,8 @@
         iOS &nbsp;·&nbsp; Launching soon
       </div>
       <div class="hero-wordmark reveal" aria-label="Dinnrd">Dinn<span>rd</span></div>
-      <h1 class="hero-tagline reveal">Stop staring at the fridge.</h1>
+      <p class="hero-tagline reveal">Stop staring at the fridge.</p>
+      <h1 class="hero-headline reveal">The dinner planning app: so you can turn your brain off.</h1>
 
       <div class="hero-benefits" aria-label="Key benefits">
         <div class="hero-benefit reveal">
@@ -197,6 +198,10 @@
             <button id="hero-btn" type="button">Save my spot</button>
           </div>
           <p class="hero-note" id="hero-note">First 500 users get 3 months free · +1 month per paying referral (up to 12 months)</p>
+          <div class="spot-counter" id="hero-spot-counter" style="display:none;">
+            <p class="spot-counter-text"><span id="hero-spot-count">0</span> of 500 spots already claimed</p>
+            <div class="spot-progress"><div class="spot-progress-bar" id="hero-spot-bar"></div></div>
+          </div>
           <div class="form-error" id="hero-error" aria-live="polite"></div>
         </div>
       </div>
@@ -227,53 +232,14 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     SECTION 2 — Problem cards
-═══════════════════════════════════════════════════════════════════════ -->
-<section id="problems" class="has-grain" aria-label="The problems Dinnrd solves">
-  <div class="problems-header reveal">
-    <h2 class="problems-heading">Sound familiar?</h2>
-  </div>
-
-  <div class="problems-grid">
-    <div class="prob-card reveal">
-      <div class="prob-icon" aria-hidden="true">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-        </svg>
-      </div>
-      <p class="prob-quote">"I don't know, what do you want?"</p>
-      <p class="prob-stat">It's the same question every night. Most families spend over 40 minutes a week just figuring out what to cook. That's 35 hours a year per person, spent on a question nobody wants to answer.</p>
-      <div class="prob-solve" aria-label="How Dinnrd helps">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        Dinnrd plans your week in a few taps
-      </div>
-    </div>
-
-    <div class="prob-card reveal">
-      <div class="prob-icon" aria-hidden="true">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
-          <path d="M12 6v2m0 8v2m-3.5-7h5a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3H14"/>
-        </svg>
-      </div>
-      <p class="prob-quote">"That's been in there way too long..."</p>
-      <p class="prob-stat">32% of all food bought ends up in the trash. Rising grocery costs mean this is only getting more expensive.</p>
-      <div class="prob-solve" aria-label="How Dinnrd helps">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        Dinnrd's meal planner prioritizes items before they expire
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════════════
      Stats strip
 ═══════════════════════════════════════════════════════════════════════ -->
 <section id="stats-strip" class="has-grain" aria-label="Impact stats">
   <div class="stats-inner">
     <div class="reveal">
+      <p class="stat-top">the average household tosses</p>
       <div class="stat-num"><span>$</span><span class="stat-val" data-target="1500">1,500</span><sup class="stat-ref">1</sup></div>
-      <div class="stat-label">in food is what the average household throws away every year</div>
+      <div class="stat-label">of food every year</div>
     </div>
     <div class="reveal">
       <div class="stat-num"><span class="stat-val" data-target="32">32</span><span>%</span><sup class="stat-ref">2</sup></div>
@@ -288,6 +254,48 @@
     <span>1. USDA Economic Research Service (2023)</span>
     <span>2. Yu &amp; Jaenicke (2020). Estimating Food Waste as Household Production Inefficiency. <cite>American Journal of Agricultural Economics</cite>, 102(2), 525–547.</span>
   </p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECTION 2 — Problem cards
+═══════════════════════════════════════════════════════════════════════ -->
+<section id="problems" class="has-grain" aria-label="The problems Dinnrd solves">
+  <div class="problems-header reveal">
+    <h2 class="problems-heading">Sound familiar?</h2>
+  </div>
+
+  <div class="problems-grid">
+    <div class="prob-card reveal">
+      <div class="prob-image" aria-hidden="true"></div>
+      <div class="prob-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
+          <path d="M12 6v2m0 8v2m-3.5-7h5a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3H14"/>
+        </svg>
+      </div>
+      <p class="prob-quote">"That's been in there way too long..."</p>
+      <p class="prob-stat">32% of all food bought ends up in the trash. Rising grocery prices mean this is getting more and more expensive.</p>
+      <div class="prob-solve" aria-label="How Dinnrd helps">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Dinnrd saves food from the trash
+      </div>
+    </div>
+
+    <div class="prob-card reveal">
+      <div class="prob-image" aria-hidden="true"></div>
+      <div class="prob-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <p class="prob-quote">"I don't know, what do you want?"</p>
+      <p class="prob-stat">It's the same question every night. Most adults spend over 40 minutes a week just figuring out what to cook. That's 35 hours a year per person, spent on a question nobody wants to answer.</p>
+      <div class="prob-solve" aria-label="How Dinnrd helps">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Dinnrd plans your week in a few taps
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -332,7 +340,7 @@
     </div>
     <div class="feat-text feat-text-reveal">
       <h2 class="feat-h">Use everything. Waste nothing.</h2>
-      <p class="feat-p">Add items by voice, by hand, or directly from your grocery list. Dinnrd keeps track of what you have and plans meals around what needs using first, so food ends up on the plate and not in the trash.</p>
+      <p class="feat-p">Add items by voice, by hand, or directly from your grocery list. Dinnrd knows what's in your kitchen and plans meals around what needs using first, so food ends up on the plate and not in the trash.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         No more forgotten leftovers
@@ -362,7 +370,7 @@
     </div>
     <div class="feat-text feat-text-reveal">
       <h2 class="feat-h">One Sunday. Seven dinners.</h2>
-      <p class="feat-p">Plan your week in a few taps. Dinnrd builds around your household's dietary requirements, schedule, and the ingredients you already have. The cooking is on you. The planning is done.</p>
+      <p class="feat-p">Plan your week in a few taps. Dinnrd builds around what your family eats, your week, and what you've already got. The cooking is on you. The planning is done.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         No more deciding what's for dinner
@@ -392,7 +400,7 @@
     </div>
     <div class="feat-text feat-text-reveal">
       <h2 class="feat-h">Nothing extra. Nothing missing.</h2>
-      <p class="feat-p">Dinnrd builds your grocery list directly from your meal plan, nothing you already have at home. Items can be added manually. You'll show up to the shops knowing exactly what to grab.</p>
+      <p class="feat-p">Dinnrd builds your grocery list straight from your meal plan, minus what you already have at home. Add anything else by hand. You'll show up to the shops knowing exactly what to grab.</p>
       <div class="feat-pill" aria-label="Key benefit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         No more buying what you already own
@@ -409,40 +417,61 @@
     <h2 class="faq-heading reveal">FAQ</h2>
     <div class="faq-list">
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">How much is Dinnrd Pro?</h3>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>How much is Dinnrd Pro?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <p class="faq-a">$5 a month or $48 a year. All beta testers will lock in that rate for life.</p>
-      </div>
+      </details>
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">Is there a free trial?</h3>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>Is there a free trial?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <p class="faq-a">The first 500 people on the waitlist get 3 months free. You also earn 1 additional free month for every paying user you refer, up to 12 months total. After that, your beta tester pricing kicks in.</p>
-      </div>
+      </details>
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">What happens after I join the waitlist?</h3>
-        <p class="faq-a">We will email you the moment TestFlight opens. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Each paying user you refer earns you 1 additional free month, up to 12 months total.</p>
-      </div>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>What happens after I join the waitlist?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <p class="faq-a">We'll email you the moment TestFlight opens. If you're in the first 500, you get 3 months free to try it properly, then $5/mo after that. Each paying user you refer earns you 1 additional free month, up to 12 months total.</p>
+      </details>
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">How do I add things to my pantry?</h3>
-        <p class="faq-a">Mostly by talking to it. Say something like "we have three tins of tomatoes, a block of cheddar and 500g of chicken breast that looks like it needs to be used soon" and Dinnrd figures out the rest. You can type manually if you prefer.</p>
-      </div>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>How do I add things to my pantry?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <p class="faq-a">Mostly by talking to it. Say something like "three cans of tomatoes, some mozzarella, and half a kilo of chicken that's going off in two days" and Dinnrd figures out the rest. You can type manually if you prefer.</p>
+      </details>
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">Can I save my own recipes?</h3>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>Can I save my own recipes?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <p class="faq-a">Yes. Dinnrd has a dedicated cookbooks section where you can save, organize, and search your own recipes. Anything you add can be used in your meal plan.</p>
-      </div>
+      </details>
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">What platform is Dinnrd on?</h3>
-        <p class="faq-a">iOS only with Android on the roadmap.</p>
-      </div>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>What platform is Dinnrd on?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <p class="faq-a">iOS first. Android is coming — join the waitlist either way and we'll tell you when it's your turn.</p>
+      </details>
 
-      <div class="faq-item reveal">
-        <h3 class="faq-q">Is my data private?</h3>
+      <details class="faq-item reveal">
+        <summary class="faq-q">
+          <h3>Is my data private?</h3>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
         <p class="faq-a">Your meal plans, pantry, and grocery lists live on your account. Full details in our <a href="/privacy">privacy policy</a>.</p>
-      </div>
+      </details>
 
     </div>
   </div>
@@ -466,7 +495,7 @@
       </div>
       <div class="form-error" id="mid-error" aria-live="polite"></div>
     </div>
-    <div class="waitlist-count-wrap" id="mid-count-wrap"><span id="mid-count"></span> already on the waitlist</div>
+    <div class="waitlist-count-wrap" id="mid-count-wrap"><span id="mid-count"></span> of 500 spots already claimed</div>
   </div>
 </section>
 

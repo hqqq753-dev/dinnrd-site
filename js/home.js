@@ -203,12 +203,23 @@ document.querySelectorAll('.prob-card').forEach(card => {
 fetch('/.netlify/functions/waitlist-count')
   .then(r => r.json())
   .then(({ count }) => {
-    if (!count || count < 1) return;
-    ['hero', 'mid'].forEach(prefix => {
-      const wrap = document.getElementById(prefix + '-count-wrap');
-      const span = document.getElementById(prefix + '-count');
-      if (wrap && span) { span.textContent = count.toLocaleString(); wrap.style.display = 'block'; }
-    });
+    const cap = 500;
+    const safeCount = Math.max(0, count || 0);
+    const pct = Math.min(100, (safeCount / cap) * 100);
+    const heroCounter = document.getElementById('hero-spot-counter');
+    const heroCount   = document.getElementById('hero-spot-count');
+    const heroBar     = document.getElementById('hero-spot-bar');
+    if (heroCounter && heroCount && heroBar) {
+      heroCount.textContent = safeCount.toLocaleString();
+      heroCounter.style.display = 'block';
+      requestAnimationFrame(() => { heroBar.style.width = pct + '%'; });
+    }
+    const midWrap  = document.getElementById('mid-count-wrap');
+    const midCount = document.getElementById('mid-count');
+    if (midWrap && midCount) {
+      midCount.textContent = safeCount.toLocaleString();
+      if (safeCount > 0) midWrap.style.display = 'block';
+    }
   })
   .catch(() => {});
 
