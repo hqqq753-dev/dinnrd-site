@@ -308,7 +308,7 @@ body {
   font-size: clamp(40px, 5.5vw, 56px); color: var(--green-dark); line-height: 1; margin-bottom: 12px;
 }
 .stat-num span { color: var(--orange); }
-.stat-top { font-size: 13px; color: rgba(29,77,46,0.62); margin-bottom: 8px; letter-spacing: 0.02em; }
+.stat-top { font-size: 14px; color: rgba(29,77,46,0.78); line-height: 1.55; margin-bottom: 8px; }
 .stat-label { font-size: 14px; color: rgba(29,77,46,0.78); line-height: 1.55; max-width: 180px; margin: 0 auto; }
 .stat-footnote { font-size: 11px; color: rgba(29,77,46,0.45); text-align: center; margin-top: 36px; max-width: 880px; margin-left: auto; margin-right: auto; }
 .stat-footnote cite { font-style: italic; }
