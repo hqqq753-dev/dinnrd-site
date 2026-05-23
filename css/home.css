@@ -224,6 +224,7 @@ body {
 }
 .problems-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .prob-image {
+  display: block;
   width: 100%; aspect-ratio: 16 / 10; border-radius: 18px;
   background: linear-gradient(135deg, rgba(196,98,45,0.12), rgba(45,106,63,0.08));
   margin-bottom: 28px; overflow: hidden; position: relative; z-index: 1;
