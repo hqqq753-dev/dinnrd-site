@@ -85,7 +85,7 @@ if (window.innerWidth >= 768) {
 const scrollCue = document.querySelector('.scroll-cue');
 if (scrollCue) {
   scrollCue.addEventListener('click', () => {
-    document.getElementById('problems').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('stats-strip').scrollIntoView({ behavior: 'smooth' });
   });
 }
 
