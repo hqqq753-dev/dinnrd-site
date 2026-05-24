@@ -105,6 +105,9 @@ body {
 .iphone-screen {
   position: absolute; inset: 0; border-radius: 44px; overflow: hidden; background: #111;
 }
+.iphone-screen picture {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+}
 .iphone-screenshot {
   width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;
 }
@@ -440,7 +443,11 @@ footer a:hover { text-decoration: underline; color: rgba(250,247,242,0.9); }
   #mid-cta       { padding: 72px 24px; }
   .feat-text     { order: -1; }
 }
-@media (max-width: 460px) {
+@media (max-width: 600px) {
+  .email-row input[type="email"] { padding: 0 14px; font-size: 14px; }
+  .email-row button { padding: 0 14px; font-size: 13px; }
+}
+@media (max-width: 380px) {
   .email-row { flex-direction: column; height: auto; border-radius: 12px; }
   .email-row input[type="email"] { border-radius: 12px 12px 0 0; height: 52px; width: 100%; }
   .email-row button { border-radius: 0 0 12px 12px; height: 52px; width: 100%; }
@@ -568,8 +575,10 @@ footer a:hover { text-decoration: underline; color: rgba(250,247,242,0.9); }
   }
 }
 @media (max-width: 640px) {
-  .how-steps { grid-template-columns: 1fr; gap: 32px; text-align: left; }
-  .how-num { margin-left: 0; }
+  .how-steps { grid-template-columns: 1fr; gap: 24px; text-align: left; }
+  .how-step { display: flex; align-items: center; gap: 16px; }
+  .how-num { margin: 0; flex-shrink: 0; }
+  .how-h { margin-bottom: 0; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════
